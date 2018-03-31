@@ -1,0 +1,565 @@
+.layout-wrapper {
+    position: relative;
+    z-index: 0;
+}
+
+.layout-wrapper {
+    width: 100%;
+    height: 100%;
+    min-width: 940px;
+    background-color: #fff;
+}
+.layout-header-inner{
+    border: solid transparent;
+    border-width: 1px 0;
+    background: #f5f8fa;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.mod-nav {
+    position: relative;
+    z-index: 10;
+    height: 60px;
+}
+.mod-nav .logo {
+    float: left;
+}
+.mod-nav .logo a {
+    display: block;
+    width: 140px;
+    height: 32px;
+    margin: 14px 0 0 30px;
+    background-image: url(../../../images/netdisk/logo-v2.png);
+    background-size: 100% 100%;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    line-height: 100px;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #020202;
+    outline: 0;
+}
+.mod-nav .mod-act {
+    z-index: 10;
+}
+
+.mod-nav .mod-act {
+    position: relative;
+    float: left;
+    margin: 12px 0 0 76px;
+}
+.mod-act .act-link {
+    position: relative;
+    display: block;
+    width: 34px;
+    height: 34px;
+    border-radius: 2px;
+    text-align: center;
+    background: #E9EEF3;
+    border: 1px solid transparent;
+}
+.mod-act .act-link:hover{
+    border-color: #D8DCE5;
+}
+.mod-act .act-icon {
+    position: relative;
+    display: block;
+    height: 100%;
+}
+.mod-act .icon-sort_icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 50%;
+    top: 50%;
+    margin: -12px 0 0 -12px;
+    line-height: 1.4em;
+    font-weight: 900;
+}
+.mod-nav .mod-search {
+    position: relative;
+    display: inline-block;
+    width: 260px;
+    float: left;
+    margin: 12px 0 0 16px;
+    z-index: 9;
+    transition: all .6s cubic-bezier(.19,1,.22,1);
+}
+.mod-search .search-panel {
+    background: #E9EEF2;
+    padding: 0 44px 0 10px;
+    border-radius: 2px;
+    border: 1px solid #E9EEF2;
+    transition: ease all;
+    transition-duration: .3s;
+}
+.mod-search.focus .search-panel,
+.mod-search:hover .search-panel {
+    border: 1px solid #D2D8DC
+}
+.mod-search .mod-input {
+    position: relative;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    padding: 7px 0;
+    border-radius: 4px;
+    color: #A2A2A2;
+    z-index: 4;
+    border: 0;
+    background: 0 0;
+}
+.mod-search .btn-search {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 44px;
+    z-index: 5;
+    cursor: pointer;
+}
+.mod-search .icon-sousuo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -11px 0 0 -12px;
+    width: 24px;
+    height: 24px;
+    font-size: 1.3em;
+    font-weight: 900;
+}
+.mod-nav .mod-act-group {
+    float: right;
+    margin: 0 68px 0 0;
+}
+.mod-act-group .act-item {
+    position: relative;
+    float: left;
+    margin: 0 0 0 7px;
+    line-height: 60px;
+}
+.mod-act-group .act-item-txt a {
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 6px;
+}
+.mod-act-group .act-item-txt .icon-xiangxia1 {
+    transform: rotate(0);
+    transition: all .3s;
+}
+.icon-xiangxia1 {
+    width: 16px;
+    height: 16px;
+
+}
+.layout-body-inner {
+    position: relative;
+    padding: 0 0 0 200px;
+    height: 100%;
+}
+.layout-aside {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    background: #fff;
+}
+.layout-aside .mod-user {
+    margin: 10px auto 0;
+}
+
+.mod-user {
+    width: 4.5em;;
+    position: relative;
+    z-index: 9;
+}
+.mod-user .user-avatar {
+    padding-top: 0;
+}
+.mod-user .user-avatar-pic {
+    position: relative;
+    display: inline-block;
+    height: 58px;
+}
+.mod-user .user-avatar img {
+    width: 56px;
+    height: 56px;
+    border: 1px solid transparent;
+    border-radius: 100%;
+}
+img {
+    background-image: none!important;
+}
+.layout-aside .mod-menu {
+    margin: 8px 0 0;
+}
+
+.mod-menu {
+    overflow-y: auto;
+}
+.mod-menu .menu-item {
+    position: relative;
+    padding: 10px 0;
+}
+.mod-menu .menu-item:after {
+    position: absolute;
+    content: "";
+    width: 120px;
+    height: 1px;
+    bottom: 0;
+    background: #E8EAEB;
+    left: 50%;
+    margin: 0 0 0 -60px;
+}
+.mod-menu .menu-item-bd{
+    z-index: 5;
+    position: relative;
+}
+.mod-menu .menu-list li a {
+    position: relative;
+    height: 2.8em;
+    line-height: 2.8em;
+    display: block;
+    padding: 0 0 0 58px;
+    color: #000;
+    font-size: 0.9em;
+}
+.mod-menu .iconfont {
+    position: relative;
+    margin: 0 12px 0 0;
+    top: -1px;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    font-weight: 400;
+}
+.layout-main {
+    height: 100%;
+    min-height: 100%;
+    min-width: 630px;
+    font-size: 0.9em;
+}
+.layout-main-hd{
+    position: relative;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 70px 0 30px;
+    box-sizing: border-box;
+}
+.mod-check{
+    position: absolute;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    cursor: default;
+    visibility: hidden;
+}
+
+/*.mod-check i{
+	display: inline-block;
+    vertical-align: -4px;
+}*/
+.mod-breadcrumb{
+    overflow: hidden;
+    padding: 0 20px;
+    height: 100%;
+    float: left;
+}
+.mod-breadcrumb li, .mod-breadcrumb-tab li {
+    transition: all .3s;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.mod-breadcrumb li a {
+    padding: 4px 5px;
+    color: #777;
+}
+.mod-breadcrumb li a:hover {
+    text-decoration: underline;
+}
+.mod-breadcrumb .icon-xiangyou {
+    width: 12px;
+    height: 12px;
+    margin: 0px -1px;
+    font-weight: 900;
+    color: #ccc;
+}
+.mod-breadcrumb .cur a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+}
+.mod-breadcrumb .cur a:hover {
+    text-decoration: none;
+    cursor: default;
+}
+.mod-action-wrap{
+    float: right;
+    margin: 12px 15px 0 0;
+    border: 1px solid #D2D8DC;
+    border-radius: 2px;
+}
+.mod-action-wrap .action-item {
+    position: relative;
+    float: left;
+}
+.mod-action-wrap .action-item-con {
+    cursor: pointer;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 14px;
+    border-right: 1px solid #D2D8DC;
+}
+.mod-action-wrap .action-item-con .icon {
+    margin-right: 2px;
+    width: 24px;
+    height: 24px;
+}
+.mod-action-wrap .action-item:hover {
+    background-color: #F5F8FA;
+}
+.layout-main-hd .mod-upload {
+    float: right;
+    top: 1px;
+    display: inline-block;
+    position: relative;
+}
+.mod-upload .btn-l {
+    text-align: center;
+    display: inline-block;
+}
+.btn {
+    text-align: center;
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    background-color: transparent;
+}
+.btn-l, .btn-xl {
+    height: 36px;
+    line-height: 36px;
+    padding: 0 30px;
+    border-radius: 2px;
+    background: #00A4FF;
+    color: #fff;
+    font-size: 16px;
+}
+.mod-upload.act .mod-bubble-menu-upload {
+    opacity: 1;
+    max-height: 400px;
+}
+
+.mod-bubble-menu.with-border {
+    border: 1px solid #C8CCD3;
+}
+.mod-bubble-menu {
+    position: absolute;
+    z-index: 100;
+    top: 80px;
+    left: 500px;
+    box-sizing: border-box;
+    width: 180px;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 4px 0;
+    box-shadow: 0 1px 4px 0 rgba(15,32,65,.2);
+    transform: translate3d(0,-10px,0);
+}
+.mod-upload .mod-bubble-menu-upload{
+    transition: all .6s cubic-bezier(.19,1,.22,1);
+    left: auto;
+    right: 0;
+    top: 57px;
+    width: 184px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+.btn-l i {
+    margin: 0 12px 0 -3px;
+    top: -2px;
+    color: inherit;
+}
+.btn-l .btn-txt {
+    position: relative;
+    color: inherit;
+}
+.btn-l .icon-jia {
+    width: 24px;
+    height: 24px;
+}
+.btn-l:hover, .btn-xl:hover {
+    background-color: #0097EA;
+}
+.layout-main-bd {
+    position: relative;
+    z-index: 9;
+}
+.icon-m {
+    width: 40px;
+    height: 40px;
+
+}
+.list-group-item.label {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    cursor: default;
+    position: absolute;
+    visibility: hidden;
+}
+.icon {
+    background-repeat: no-repeat;
+    font-size: 0;
+    overflow: hidden;
+    -webkit-text-size-adjust: none;
+}
+.icon-check-s {
+    display: inline-block;
+    vertical-align: -4px;
+    width: 18px;
+    height: 18px;
+    background-image: url(../../../images/netdisk/check/icon-checkbox.svg);
+}
+.icon-check-s:hover{
+    cursor: pointer;
+    background-image: url(../../../images/netdisk/check/icon-checkbox-hover.svg);
+}
+.mod-list-group tbody tr.act .icon-check-s,.mod-check.act .icon-check-s{
+    background-image: url(../../../images/netdisk/check/icon-checkbox-act.svg);
+}
+.mod-list-group tbody tr.act .label,
+.mod-list-group tbody tr:hover .label,
+.layout-main-hd:hover .mod-check,
+.mod-check.hover,
+.mod-check.act {
+    visibility: visible;
+}
+.icon-nor-m {
+    background-image: url(../../../images/netdisk/doctype/icon-nor-m.svg);
+}
+.icon-audio-m {
+    background-image: url(../../../images/netdisk/doctype/icon-audio-m.svg);
+}
+.icon-video-m {
+    background-image: url(../../../images/netdisk/doctype/icon-video-m.svg);
+}
+.icon-bt-m {
+    background-image: url(../../../images/netdisk/doctype/icon-bt-m.svg);
+}
+.icon-code-m {
+    background-image: url(../../../images/netdisk/doctype/icon-code-m.svg);
+}
+.icon-file-m {
+    background-image: url(../../../images/netdisk/doctype/icon-file-m.svg);
+}
+.icon-nor-m {
+    background-image: url(../../../images/netdisk/doctype/icon-nor-m.svg);
+}
+.icon-pdf-m {
+    background-image: url(../../../images/netdisk/doctype/icon-pdf-m.svg);
+}
+.icon-ppt-m {
+    background-image: url(../../../images/netdisk/doctype/icon-ppt-m.svg);
+}
+.icon-doc-m {
+    background-image: url(../../../images/netdisk/doctype/icon-doc-m.svg);
+}
+.icon-txt-m {
+    background-image: url(../../../images/netdisk/doctype/icon-txt-m.svg);
+}
+.icon-xls-m {
+    background-image: url(../../../images/netdisk/doctype/icon-xls-m.svg);
+}
+.icon-zip-m {
+    background-image: url(../../../images/netdisk/doctype/icon-zip-m.svg);
+}
+.icon-pic-m {
+    background-image: url(../../../images/netdisk/doctype/icon-pic-m.svg);
+}
+.mod-list-group{
+    width: 100%;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    padding-right: 16px;
+    border-collapse: collapse;
+}
+.mod-list-group tr{
+    border-bottom: 1px solid #F1F2F4;
+    height: 56px;
+    line-height: 56px;
+    cursor: pointer;
+}
+.mod-list-group tbody tr:hover,.mod-list-group tbody tr.act {
+    background: #F5F8FA;
+}
+.mod-list-group .list-group-tit {
+    color: #777;
+    cursor: pointer;
+}
+.mod-list-group .list-group-tit.cur {
+    color: #000;
+}
+.mod-list-group .list-group-tit.label{
+    width: 3%;
+}
+.mod-list-group .list-group-tit.name {
+    width: 50%;
+}
+.mod-list-group .list-group-tit.time {
+    width: 22%;
+}
+.mod-list-group .list-group-tit.size {
+    width: 22%;
+}
+.tit-con{
+    color: inherit;
+}
+.list-group-item{
+    color: #777;
+}
+.item-name .thumb {
+    float: left;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 8px 15px 0 0;
+}
+.item-name .icon {
+    vertical-align: top;
+    display: block;
+}
+.item-name .info {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 56px;
+    white-space: nowrap;
+    overflow-y: hidden;
+    position: relative;
+    z-index: 0;
+}
+.item-name .info .tit:hover {
+    text-decoration: underline;
+}
+.item-name .info .tit {
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+}

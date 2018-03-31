@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 此映射文件对应的java类的全类名 -->
+<mapper namespace="com.njwangbo.mapper.netdisk.NetDiskFolderMapper">
+	<!--映射结果集 -->
+	<resultMap type="NetDiskFolder" id="NetDiskFolder">
+		<id property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="upperId" column="UPPERID" />
+		<result property="createDate" column="CREATEDATE" />
+		<result property="lvl" column="LVL" />
+		<result property="isRecover" column="ISRECOVER" />
+		<result property="userId" column="USERID" />
+		<result property="userName" column="USERNAME" />		
+	</resultMap>
+	
+	<select id="queryNetDiskFolderAll" parameterType="NetDiskFolder" resultMap="NetDiskFolder">	
+		SELECT F.ID AS ID,F.NAME AS NAME,F.UPPERID AS UPPERID,F.LVL AS LVL,F.ISRECOVER AS ISRECOVER,U.ID AS USERID,U.NAME AS USERNAME,
+		TO_CHAR(F.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK_FOLDER F LEFT JOIN T_USER U ON F.USERID = U.ID ${condition} ORDER BY F.${sidx} ${sort}
+	</select>
+	
+	<select id="queryNetDiskFolderById" parameterType="NetDiskFolder" resultMap="NetDiskFolder">	
+		SELECT F.ID AS ID,F.NAME AS NAME,F.UPPERID AS UPPERID,F.LVL AS LVL,F.ISRECOVER AS ISRECOVER,U.ID AS USERID,U.NAME AS USERNAME,
+		TO_CHAR(F.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK_FOLDER F LEFT JOIN T_USER U ON F.USERID = U.ID WHERE F.ID=#{id} AND F.USERID=#{userId}
+	</select>
+	
+	<select id="queryNetDiskFolderByName" parameterType="NetDiskFolder" resultMap="NetDiskFolder">	
+		SELECT F.ID AS ID,F.NAME AS NAME,F.UPPERID AS UPPERID,F.LVL AS LVL,F.ISRECOVER AS ISRECOVER,U.ID AS USERID,U.NAME AS USERNAME,
+		TO_CHAR(F.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK_FOLDER F LEFT JOIN T_USER U ON F.USERID = U.ID WHERE F.NAME=#{name} AND F.USERID=#{userId}
+	</select>
+	
+	<insert id="insertNetDiskFolder" parameterType="NetDiskFolder">	
+		<!-- 返回添加完数据的id -->
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT SYS_GUID() FROM DUAL
+		</selectKey>
+		
+		INSERT INTO T_NETDISK_FOLDER(ID,NAME,UPPERID,LVL,ISRECOVER,CREATEDATE,USERID) VALUES(#{id},#{name},#{upperId},'1','0',SYSDATE,#{userId})
+	</insert>
+	
+	<insert id="insertNetDiskFolderBase" parameterType="NetDiskFolder">	
+		<!-- 返回添加完数据的id -->
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT SYS_GUID() FROM DUAL
+		</selectKey>
+
+		INSERT INTO T_NETDISK_FOLDER(ID,NAME,LVL,ISRECOVER,CREATEDATE,USERID) 
+		VALUES(#{id},#{name},'0','0',SYSDATE,#{userId})
+	</insert>
+	
+	<delete id="deleteNetDiskFolderById" parameterType="NetDiskFolder">		
+		DELETE FROM T_NETDISK WHERE ID=#{id} AND USERID=#{userId} AND LVL = '1' AND ISRECOVER = '1'
+	</delete>
+	
+	<update id="recycleNetDiskFolderById" parameterType="NetDiskFolder" >
+		UPDATE T_NETDISK_FOLDER SET ISRECOVER = '1',CREATEDATE=sysdate WHERE ID=#{id} AND USERID=#{userId} AND LVL = '1' 
+	</update>
+	
+	<update id="updateNetDiskFolder" parameterType="NetDiskFolder">		
+		UPDATE T_NETDISK_FOLDER SET NAME=#{name},ISRECOVER = #{isRecover},UPPERID=#{upperId},CREATEDATE=sysdate WHERE ID=#{id} AND USERID=#{userId} AND LVL = '1' 
+	</update>
+	
+	<!-- 分页查询用户 -->
+    <select id="queryNetDiskFolderByCondition" parameterType="NetDiskCondition" resultMap="NetDiskFolder">
+    	SELECT T2.ID AS ID,T2.NAME AS NAME,T2.UPPERID AS UPPERID,T2.USERID AS USERID,T2.USERNAME AS USERNAME,T2.CREATEDATE AS CRETEDATE
+		FROM
+		(SELECT T1.ID,T1.NAME,T1.UPPERID,T1.USERID,T1.USERNAME,T1.CREATEDATE,ROWNUM AS ROWNO
+		FROM
+		(SELECT F.ID AS ID,F.NAME AS NAME,F.UPPERID AS UPPERID,U.ID AS USERID,U.NAME AS USERNAME,TO_CHAR(F.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK_FOLDER F 
+		LEFT JOIN T_USER U ON F.USERID = U.ID ${condition} ) T1 ) T2
+		WHERE T2.ROWNO BETWEEN ((#{pageNum}-1)*#{pageSize}+1) AND  #{pageNum}*#{pageSize} ORDER BY T2.CREATEDATE DESC
+    </select>
+    
+	<!-- 查询总条数 -->
+    <select id="queryNetDiskFolderCount" parameterType="NetDiskCondition" resultType="int">
+    	SELECT COUNT(ID) FROM (SELECT F.ID AS ID,F.NAME AS NAME,F.UPPERID AS UPPERID,F.LVL AS LVL,F.ISRECOVER AS ISRECOVER,U.ID AS USERID,U.NAME AS USERNAME,
+		TO_CHAR(F.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK_FOLDER F LEFT JOIN T_USER U ON F.USERID = U.ID ${condition})
+    </select>
+	
+	<select id="querySrc" parameterType="NetDiskFolder" resultMap="NetDiskFolder">
+    	SELECT F.ID AS ID,F.NAME AS NAME,F.UPPERID AS UPPERID,F.LVL AS LVL,F.ISRECOVER AS ISRECOVER,U.ID AS USERID,U.NAME AS USERNAME,TO_CHAR(F.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE 
+    	FROM T_NETDISK_FOLDER F LEFT JOIN T_USER U ON F.USERID = U.ID START WITH F.ID = '${upperId}' AND F.USERID='${userId}' CONNECT BY PRIOR F.UPPERID = F.ID
+    </select>
+	
+</mapper>

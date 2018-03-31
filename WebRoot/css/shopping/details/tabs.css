@@ -1,0 +1,78 @@
+@CHARSET "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.TabContext{
+	background-color:#FFFFFF;
+}
+.Tabs{
+	margin: 0em auto;
+	font-size: 1em;
+	background-color:#fff;
+	color: #3c3838;
+	font-family: "微软雅黑";
+}
+.Tabs_menu{
+	position: relative;
+	width: 100%;
+	border-bottom: 0.0125em solid #FF6700;
+	z-index: 5;
+}
+.Tabs:AFTER,.Tabs_menu:AFTER{
+	content: "";
+	display: block;
+	clear: both;
+}
+.Tabs_option{
+	font-size: 1em;
+    float: left;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+    font-weight: 500;
+    cursor: pointer;
+}
+.selected{
+	background-color: #FF6700;
+	color: #fff;
+}
+.Tabs_content{
+	display:none;
+	width: 100%;
+    min-height: 30em;
+    float: left;
+}
+#tabs3{
+	width: 100%;
+	text-align: center;
+}
+#tab3 img{
+	max-width: 100%;
+	display:block;
+	margin: 0 auto;
+}
+#tabs4{
+	width: 100%;
+	padding-top: 1.5em;
+}
+.show{
+	display: block;
+}
+#itemHover{
+	height:2.5em;
+	background-color: #ffa76c;
+	position: absolute;
+	top:0em;
+	opacity: 0;
+	transition:all 250ms;
+}
+#itemSelect{
+	height:2.5em;
+	background-color: #FF6700;
+	position: absolute;
+	top:0em;
+	transition:all 250ms;
+}

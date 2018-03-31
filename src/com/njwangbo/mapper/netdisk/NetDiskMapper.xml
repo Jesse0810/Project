@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 此映射文件对应的java类的全类名 -->
+<mapper namespace="com.njwangbo.mapper.netdisk.NetDiskMapper">
+	<!--映射结果集 -->
+	<resultMap type="NetDisk" id="NetDisk">
+		<id property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="suffix" column="SUFFIX" />
+		<result property="fileSize" column="FILESIZE" />
+		<result property="upperId" column="UPPERID" />
+		<result property="type" column="TYPE" />
+		<result property="isRecover" column="ISRECOVER" />
+		<result property="createDate" column="CREATEDATE" />
+		<result property="userId" column="USERID" />
+		<result property="userName" column="USERNAME" />		
+		
+	</resultMap>
+	
+	<select id="queryNetDiskAll" parameterType="NetDisk" resultMap="NetDisk">	
+		SELECT N.ID AS ID,N.NAME AS NAME,N.SUFFIX AS SUFFIX,N.FILESIZE AS FILESIZE,N.TYPE AS TYPE,N.ISRECOVER AS ISRECOVER,U.ID AS USERID,U.NAME AS USERNAME,N.UPPERID AS UPPERID,
+		TO_CHAR(N.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK N LEFT JOIN T_USER U ON N.USERID = U.ID ${condition} ORDER BY N.${sidx} ${sort}
+	</select>
+	
+	<select id="queryNetDiskById" parameterType="NetDisk" resultMap="NetDisk">	
+		SELECT N.ID AS ID,N.NAME AS NAME,N.SUFFIX AS SUFFIX,N.FILESIZE AS FILESIZE,N.TYPE AS TYPE,N.ISRECOVER AS ISRECOVER,U.ID AS USERID,U.NAME AS USERNAME,N.UPPERID AS UPPERID,
+		TO_CHAR(N.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK N LEFT JOIN T_USER U ON N.USERID = U.ID WHERE N.ID=#{id} 
+		AND N.USERID=#{userId}
+	</select>
+	
+	<select id="queryNetDiskByName" parameterType="NetDisk" resultMap="NetDisk">	
+		SELECT N.ID AS ID,N.NAME AS NAME,N.SUFFIX AS SUFFIX,N.FILESIZE AS FILESIZE,N.TYPE AS TYPE,N.ISRECOVER AS ISRECOVER,U.ID AS USERID,U.NAME AS USERNAME,N.UPPERID AS UPPERID,
+		TO_CHAR(N.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK N LEFT JOIN T_USER U ON N.USERID = U.ID WHERE N.NAME=#{name} 
+		AND N.USERID=#{userId}
+	</select>
+	
+	<insert id="insertNetDisk" parameterType="NetDisk">	
+		<!-- 返回添加完数据的id -->
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT SYS_GUID() FROM DUAL
+		</selectKey>
+		
+		INSERT INTO T_NETDISK VALUES(#{id},#{name},#{suffix},#{fileSize},SYSDATE,#{upperId},#{userId},'0',#{type})
+	</insert>
+	
+	<delete id="deleteNetDiskById" parameterType="NetDisk">		
+		DELETE FROM T_NETDISK WHERE ID=#{id} AND USERID=#{userId} AND ISRECOVER='1'
+	</delete>
+	
+	<update id="recycleNetDiskById" parameterType="NetDisk">		
+		UPDATE T_NETDISK SET ISRECOVER='1',CREATEDATE=sysdate WHERE ID=#{id} AND USERID=#{userId}
+	</update>
+	
+	<update id="updateNetDisk" parameterType="NetDisk">		
+		UPDATE T_NETDISK SET NAME=#{name},SUFFIX=#{suffix},TYPE=#{type},ISRECOVER=#{isRecover},FILESIZE=#{fileSize},UPPERID=#{upperId},CREATEDATE=sysdate WHERE ID=#{id} AND USERID=#{userId}
+	</update>
+	
+	<!-- 分页查询网盘文件 -->
+    <select id="queryNetDiskByCondition" parameterType="NetDiskCondition" resultMap="NetDisk">
+    	SELECT T2.ID AS ID,T2.NAME AS NAME,T2.SUFFIX AS SUFFIX,T2.FILESIZE AS FILESIZE,T2.USERID AS USERID,T2.USERNAME AS USERNAME,
+    	T2.UPPERID AS UPPERID,T2.CREATEDATE AS CRETEDATE
+		FROM
+		(SELECT T1.ID,T1.NAME,T1.SUFFIX,T1.FILESIZE,T1.USERID,T1.USERNAME,T1.UPPERID,T1.CREATEDATE,ROWNUM AS ROWNO
+		FROM
+		(SELECT N.ID AS ID,N.NAME AS NAME,N.SUFFIX AS SUFFIX,N.FILESIZE AS FILESIZE,U.ID AS USERID,U.NAME AS USERNAME,N.UPPERID AS UPPERID,
+		TO_CHAR(N.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK N LEFT JOIN T_USER U ON N.USERID = U.ID ${condition} ) T1 ) T2
+		WHERE T2.ROWNO BETWEEN ((#{pageNum}-1)*#{pageSize}+1) AND  #{pageNum}*#{pageSize} ORDER BY T2.CREATEDATE DESC
+    </select>
+    
+	<!-- 查询总条数 -->
+    <select id="queryNetDiskCount" parameterType="NetDiskCondition" resultType="int">
+    	SELECT COUNT(ID) FROM (SELECT N.ID AS ID,N.NAME AS NAME,N.SUFFIX AS SUFFIX,N.FILESIZE AS FILESIZE,N.TYPE AS TYPE,N.ISRECOVER AS ISRECOVER,U.ID AS USERID,U.NAME AS USERNAME,N.UPPERID AS UPPERID,
+		TO_CHAR(N.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI') AS CREATEDATE FROM T_NETDISK N LEFT JOIN T_USER U ON N.USERID = U.ID ${condition})
+    </select>
+	
+</mapper>

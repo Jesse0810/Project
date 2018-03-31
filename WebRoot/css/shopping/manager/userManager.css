@@ -1,0 +1,189 @@
+.tableContent {
+	padding: 1em;
+}
+.tableContent .tableTitle{
+	position: relative;
+	padding: 0.7em 0.5em;
+    color: #21709c;
+    font-size: 0.9em;
+    border-bottom: 0.0625em solid #d8d8d8;
+}
+.tableContent .tableTime{
+	position: absolute;
+    top: 0.7em;
+    right: 2.5em;
+    color: #8c8c8c;
+    white-space: pre-wrap;
+}
+.tableManage{
+	width: 100%;
+    color: #333;
+    margin: 0.9em 0em;
+    border: 0.0625em solid #d8d8d8
+}
+.manage_title{
+	width: 100%;
+    background-color: #f6f6f6;
+    padding: 0.8em 0.7em;
+    font-size: 1em;
+}
+.manage_title:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.manage_name{
+	float: left;
+}
+.manage_name i{
+	margin-right: 0.3em;
+    font-size: 1.3em;
+    vertical-align: -0.1em;
+}
+.manage_btn{
+	float: right;
+    padding: 0.3em 1.5em;
+    outline: none;
+    border: 2px solid #d8d8d8;
+    margin-right: 1.5em;
+    font-size: 0.9em;
+    color: #f5f5f5;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.manage_btn.search{
+	background-color: #ffbe47;
+    border: 2px solid #fdda9a;
+}
+.manage_btn.search:hover{
+	background-color: #f7a91c;
+    border: 2px solid #eca421;
+}
+.manage_btn.add{
+	background-color: #9ACF87;
+    border: 2px solid #a9de95;
+}
+.manage_btn.add:hover{
+	background-color: #67af4b;
+    border: 2px solid #52a752;
+}
+.manage_btn.update{
+	background-color: #F9705E;
+    border: 2px solid #f78a7b;
+}
+.manage_btn.activeUpdate{
+	background-color: #ea4029;
+    border: 2px solid #dc6d5e;
+}
+.manage_btn.del{
+	background-color: #1FBEDB;
+    border: 2px solid #38d8f5;
+}
+.manage_btn.activeDel{
+	background-color: #14aac5;
+    border: 2px solid #0fc5e6;
+}
+.manage_btn i{
+	font-size: 1.1em;
+    margin-right: 0.8em;
+    font-weight: 900;
+    vertical-align: -0.1em;
+}
+.manage_search{
+	width: 100%;
+    background-color: #fff;
+}
+.manage_search td{
+	padding: 2em 1.5em;
+}
+.manage_search .manage_item{
+	width: 10%;
+    height: 2.8em;
+    padding-right: 0;
+}
+.manage_search .manage_value{
+	width: 23%;
+    height: 2.8em;
+}
+.manage_search input[type="text"]{
+	width: 100%;
+	font-size: 0.8em;
+}
+.manage_search label{
+	
+}
+.manage_search .manage_ddl{
+	position: relative;
+	width: 100%;
+    display: inline-block;
+}
+#conBtn {
+	margin-bottom: 1.5em;
+}
+
+#conBtn .btn {
+	width: auto;
+	padding: 0.2em 0.7em;
+	border-radius: 2px;
+}
+
+.welcomeTxt {
+	color: #4a4a4a;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 900;
+}
+input[type="button"] {
+    width: 100%;
+    padding: 0.26em 0.2em;
+    color: #fff;
+    background-color: #4c8dfd;
+    border: 2px solid #4c8bf9;
+    cursor: pointer;
+    outline: none;
+}
+input[type="text"], [type="password"] {
+    width: 100%;
+    padding: 0.4em 0.6em;
+    outline: none;
+    border: 1px solid #CCC;
+}
+input[type="text"]:focus, [type="password"]:focus {
+    width: 100%;
+    padding: 0.4em 0.6em;
+    outline: none;
+    border: 1px solid #4383f3;
+}
+.userImg{
+	width: 3em;
+	height: 3em;
+	border-radius: 50%;
+}
+.superMaUser{
+	color: #ce1d1d;
+    font-size: 1.5em;
+}
+.maUser{
+	color: #DAA520;
+	font-size: 1.2em
+}
+.User{
+	font-size: 1.2em;
+}
+.fMan{
+	color: #fff;
+	background-color: #5674d8;
+	padding: 0.3em 0.4em;
+	border-radius: 5px;
+}
+.woMan{
+	color: #fff;
+	background-color: #ea379c;
+	padding: 0.3em 0.4em;
+	border-radius: 5px;
+}
+#userGrid{
+	border: 0.0625em solid #F6F6F6;
+	margin-bottom: 2em;
+	box-shadow: 0px 1px 3px #888888;;
+}

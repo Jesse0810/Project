@@ -1,0 +1,221 @@
+.page-main {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.page-main {
+    background: #f5f5f5;
+}
+.checkout-box {
+    padding: 48px 0 0;
+    background-color: #fff;
+}
+.section {
+    margin-left: 48px;
+    margin-right: 48px;
+}
+.section-address .section-header {
+    margin-bottom: 20px;
+}
+.section .section-header .title {
+    float: left;
+    color: #333;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: normal;
+}
+.section-address .section-body {
+    margin-left: -18px;
+}
+.section-address .address-item {
+    float: left;
+    margin-left: 17px;
+    margin-bottom: 24px;
+    font-size: 0.85em;
+}
+.address-item {
+    width: 268px;
+    height: 178px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    position: relative;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+}
+.address-item dl {
+    padding: 15px 24px 0;
+    margin: 0;
+}
+.address-item dt {
+    margin: 0 0 10px;
+    line-height: 30px;
+}
+.address-item .tag {
+    float: right;
+    color: #b0b0b0;
+}
+.address-item .uname {
+    font-size: 18px;
+    color: #333;
+    font-style: normal;
+}
+.address-item dd {
+    margin: 0;
+    line-height: 22px;
+    color: #757575;
+}
+.section-options {
+    padding: 25px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+.section {
+    margin-left: 48px;
+    margin-right: 48px;
+    font-size: 0.9em;
+}
+.section-options .section-header {
+    float: left;
+    width: 150px;
+}
+.section-options .section-header .title {
+    line-height: 38px;
+}
+.section .section-header .title {
+    float: left;
+    color: #333;
+    font-size: 18px;
+    line-height: 37px;
+    font-weight: normal;
+}
+.section-options .section-body {
+    float: left;
+}
+.checkout-box ul, .checkout-box li {
+    list-style: none;
+}
+.section-options .options .selected {
+    border-color: #fff;
+    color: #ff6700;
+}
+.section-options .options li {
+    float: left;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #fff;
+    color: #333;
+}
+.section-options .options-list li {
+    width: 235px;
+    margin-right: 14px;
+    border-color: #e0e0e0;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+.section-options .options-list .selected:hover {
+    border-color: #ff6700;
+}
+.section-options .options-list li:hover {
+    border-color: #b0b0b0;
+}
+.section-options .options-list .selected {
+    border-color: #ff6700;
+}
+.section-options .options .selected span {
+    color: #ff6700;
+}
+.section-options .options li span {
+    color: #757575;
+}
+.section-invoice .invoice-result {
+    line-height: 40px;
+    color: #ff6700;
+}
+.section-invoice .invoice-result span {
+    margin-right: 14px;
+}
+.section-count {
+    min-height: 200px;
+    padding: 20px 0;
+    position: relative;
+}
+.section-count .money-box {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    text-align: right;
+}
+.section-count .money-box ul {
+    float: right;
+}
+.section-count .money-box li {
+    display: block;
+    padding-left: 100px;
+    line-height: 2;
+    position: relative;
+    zoom: 1;
+}
+.section-count .money-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90px;
+    color: #757575;
+    zoom: 1;
+}
+.section-count .money-box .val {
+    color: #ff6700;
+    zoom: 1;
+}
+.section-count .money-box .total-price {
+    margin-top: 10px;
+}
+.section-count .money-box .total-price label {
+    margin-top: 5px;
+}
+.section-count .money-box .total-price em {
+    font-size: 30px;
+    line-height: 1;
+}
+.section-count .money-box i, .section-count .money-box em {
+    font-style: normal;
+}
+.section-bar {
+    padding: 20px 48px;
+    border-top: 2px solid #f5f5f5;
+}
+.section-bar .fr {
+    float: right;
+    color: #757575;
+}
+.section-bar .fr .btn {
+    float: right;
+    margin-left: 30px;
+    vertical-align: top;
+}
+.section-bar .fr .btn-primary {
+    display: inline-block;
+    text-align: center;
+    padding: 0.8em 4.4em;
+    margin-top: 0.2em;
+    font-size: 0.9em;
+    font-weight: 400;
+    background: #ff6700;
+    color: #fff;
+    border: 1px solid #ff6700;
+    cursor: pointer;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+.section-bar .fr .btn-primary:hover {
+	background-color: #f25807;
+    border-color: #f25807;
+    color: #fff;
+}
+.section-bar .fr .btn-disabled{
+	background: #e0e0e0 !important;
+    border-color: #e0e0e0 !important;
+    color: #b0b0b0 !important;
+    cursor: default !important;
+}

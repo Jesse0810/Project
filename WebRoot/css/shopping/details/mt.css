@@ -1,0 +1,256 @@
+@CHARSET "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.GoodsEvaluation{
+	font-size: 1em;
+	color: #666;
+	font-family: "微软雅黑";
+	width: 100%;
+}
+.no_comment{
+	width: 100%;
+    font-size: 2em;
+    text-align: center;
+    padding: 3em 0;
+    color: #969696;
+}
+.mt{
+	position: relative;
+	padding: 0.5em;
+	font: 700 14px "microsoft yahei";
+	background-color: #e2e2e2;
+}
+.comment-info {
+    overflow: hidden;
+    zoom: 1;
+}
+.comment-info .comment-percent {
+    width: 90px;
+    padding: 15px 0 0 40px;
+    float: left;
+}
+.comment-info .percent-tit {
+    font-size: 12px;
+    color: #666;
+    font-weight: 400;
+}
+.comment-info .percent-con span {
+    font-size: 23px;
+}
+.comment-info .percent-con {
+    line-height: 110%;
+    font-size: 45px;
+    color: #FF6700;
+    font-family: arial;
+}
+.comment-info .percent {
+    float: left;
+    width: 206px;
+    height: 74px;
+    margin-top: 16px;
+    margin-left: 74px;
+    font-size: 10px;
+}
+.comment-info .percent dl {
+    padding: 4px 0;
+    overflow: hidden;
+    zoom: 1;
+}
+.comment-info .percent dt {
+    float: left;
+    width: 80px;
+}
+.comment-info .percent span {
+    color: #9C9A9C;
+}
+.comment-info .percent dd {
+    float: left;
+    width: 100px;
+    height: 14px;
+    margin-top: 2px;
+    overflow: hidden;
+    background: #e6e6e6;
+}
+.comment-info .percent dd div {
+    overflow: hidden;
+    height: 14px;
+    width: 0;
+    background-color: #FF6700;
+}
+.tab-con{
+	width: 100%;
+}
+.comment-item{
+	zoom: 1;
+    padding: 1.2em;
+    border-bottom: 0.0625em solid #ddd;
+}
+.comment-item:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.user-column{
+	float: left;
+	width: 6em;
+	margin-right: 3em;
+}
+.user-info{
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 0.8em;
+    line-height: 2em;
+
+}
+.avatar{
+	display: block;
+	border-radius: 50%;
+}
+.user-level{
+	padding-top: 0.2em;
+	font-size: 0.8em;
+	color:#333;
+}
+.user-level i{
+	margin-right: 0.4em;
+}
+.superMaUser{
+	color: #ce1d1d;
+}
+.maUser{
+	color: #DAA520;
+}
+.User{
+	
+}
+.comment-column{
+	float: left;
+	width: 85%;
+}
+.comment-column:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.comment-star{
+	width: 78px;
+    height: 14px;
+    background: url("../../image/goods_evaluation/star.png") no-repeat;
+}
+.star5{
+	background-position: 0 0;
+}
+.star4{
+	background-position: -16px 0;
+}
+.star3{
+	background-position: -32px 0;
+}
+.star2{
+	background-position: -48px 0;
+}
+.star1{
+	background-position: -64px 0;
+}
+.comment-con{
+    padding: 0.8em 0;
+    line-height: 180%;
+    color: #333;
+    font-size: 0.9em;
+}
+.pic-list{
+	padding-bottom: 1.2em;
+}
+.J-thumb-img{
+	float: left;
+    min-width: 3.2em;
+    height: 3.3em;
+    max-width: 5em;
+    text-align: center;
+    border: 0.0425em solid #D8D8D8;
+    padding-top: 0.1em;
+    margin-right: 0.7em;
+    cursor: pointer;
+}
+.comment-message{
+	width: 100%;
+	font-size: 0.7em;
+}
+.comment-message:after,.pic-list:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.order-info{
+	float: left;
+	color: #999;
+}
+.order-info span{
+	margin-right: 1.1em;
+}
+.comment-op{
+	float: right;
+	color: #666;
+}
+.comment-op a{ 
+	text-decoration: none;
+	cursor: pointer;
+}
+.comment-op i{
+	margin-right: 0.4em;
+    width: 16px;
+    height: 16px;
+    background-image: url("../../image/goods_evaluation/__sprite.png");
+    vertical-align: -0.2em;
+}
+.J-report{
+	margin-right: 2.5em;
+	font-size: 1.2em;
+}
+.J-nice{
+	margin-right: 2.5em;
+}
+.sprite-praise{
+	display: inline-block;
+    background-position: -32px -34px;
+}
+.J-comment{
+
+}
+.sprite-comment{
+	display: inline-block;
+    background-position: -48px -34px;
+}
+.comment-op a:hover{
+	color: #E4393C;
+}
+.comment-op a:hover .sprite-praise{
+	background-position: 0 -34px;
+}
+.comment-op a:hover .sprite-comment{
+	background-position: -16px -34px;
+}
+.append-comment{
+	width: 100%;
+    border-top: 0.0625em solid #f0f0f0;
+    margin-top: 0.9em;
+    padding-top: 0.9em;
+}
+.append-time{
+	font-size: 0.7em;
+	color: #999;
+}
+.append-comment:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.more{
+	margin-top: 0.5em;
+	width: 100%;
+}
+

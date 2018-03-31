@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwangbo.mapper.common.UserMapper">
+		<resultMap type="User" id="User">
+			<id property="id" column="ID" />
+			<result property="name" column="NAME" />
+			<result property="pwd" column="PWD" />
+			<result property="image" column="IMAGE" />
+			<result property="lvl" column="LVL" />
+			<result property="tel" column="TEL" />
+			<result property="sex" column="SEX" />
+			<result property="createDate" column="CREATEDATE" />
+		</resultMap>
+	<select id="queryUserById" parameterType="User"  resultMap="User">
+		select ID,NAME,PWD,TO_CHAR(CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:mi:ss') AS CREATEDATE,LVL,SEX,TEL,IMAGE from T_USER where ID = #{id}
+	</select>
+
+	<select id="queryUserByName" parameterType="User"  resultMap="User">
+		select ID,NAME,PWD,TO_CHAR(CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:mi:ss') AS CREATEDATE,LVL,SEX,TEL,IMAGE from T_USER where NAME = #{name}
+	</select>
+	
+	<select id="queryByLikeName" parameterType="User"  resultMap="User">
+		select ID,NAME,PWD,TO_CHAR(CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:mi:ss') AS CREATEDATE,LVL,SEX,TEL,IMAGE from T_USER where NAME LIKE '${name}%'
+	</select>
+	
+	<select id="queryUserByNameAndPwd" parameterType="User"  resultMap="User">
+		select ID,NAME,PWD,TO_CHAR(CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:mi:ss') AS CREATEDATE,LVL,SEX,TEL,IMAGE from T_USER where NAME = #{name} AND  PWD = #{pwd}
+	</select>
+	
+	<insert id="insertUser"  parameterType="User"  >
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT sys_guid() FROM DUAL
+		</selectKey>
+		INSERT INTO T_USER(ID,NAME,PWD,IMAGE,LVL,SEX) 
+		VALUES(#{id},#{name},#{pwd},#{image},#{lvl},#{sex})
+	</insert>
+	
+	<insert id="registerUser"  parameterType="User"  >
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT sys_guid() FROM DUAL
+		</selectKey>
+		INSERT INTO T_USER(ID,NAME,PWD,TEL) 
+		VALUES(#{id},#{name},#{pwd},#{tel})
+	</insert>
+	
+	<update id="updateUser"  parameterType="User">
+		UPDATE T_USER SET NAME = #{name},PWD = #{pwd},IMAGE = #{image},LVL = #{lvl},SEX = #{sex} WHERE ID = #{id}
+	</update>
+	
+	<delete id="deleteUserById" parameterType="User">
+		DELETE FROM T_USER WHERE ID = #{id}
+	</delete>
+	
+	<select id="queryUserForGrid"  parameterType="GridCondition"  resultMap="User" >
+		SELECT ID,NAME,PWD,CREATEDATE,LVL,SEX,TEL,IMAGE FROM (SELECT ID,NAME,PWD,CREATEDATE,LVL,SEX,TEL,IMAGE,ROWNUM AS ROWNO FROM 
+		(SELECT ID,NAME,PWD,TO_CHAR(CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:mi:ss') AS CREATEDATE,LVL,SEX,TEL,IMAGE FROM T_USER ${condition} ORDER BY CREATEDATE DESC ,ID ASC)) 
+		WHERE ROWNO BETWEEN (#{pageSize}*(#{pageNum}-1)+1) AND #{pageSize}*#{pageNum}
+	</select>
+	
+	<!-- 查询总条数 -->
+    <select id="queryCount" parameterType="GridCondition" resultType="int">
+    	SELECT COUNT(ID) AS COUNT FROM T_USER ${condition}
+    </select>
+	
+</mapper>
+

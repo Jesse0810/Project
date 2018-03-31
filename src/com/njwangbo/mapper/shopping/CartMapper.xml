@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwangbo.mapper.shopping.CartMapper">
+		<resultMap type="Cart" id="Cart">
+			<id property="id" column="CID" />
+			<result property="createDate" column="CCREATEDATE" />
+			<result property="userId" column="CUSERID" />
+			<result property="userName" column="CUSERNAME" />
+			<result property="goodsId" column="CGOODSID" />
+			<result property="goodsName" column="CGOODSNAME"/>
+			<result property="goodsPrice" column="CGOODSPRICE"/>
+			<result property="goodsStock" column="CGOODSSTOCK" />
+			<result property="num" column="CNUM" />
+			<result property="state" column="CSTATE" />
+			<result property="checked" column="CCHECKED" />
+			<collection property="imgList" ofType="GoodsImg" >
+				<id property="id" column="IMGID" />
+				<result property="name" column="IMGNAME" />
+				<result property="goodsId" column="CGOODSID" />
+			</collection>
+			
+		</resultMap>
+		
+	<select id="queryCartForGridByCondition" parameterType="GridCondition" resultMap="Cart">
+		SELECT T3.CID AS CID,T3.CNUM AS CNUM,T3.CSTATE AS CSTATE,T3.CCHECKED AS CCHECKED,T3.USERID AS CUSERID,T3.USERNAME AS CUSERNAME,
+		T3.GOODSID AS CGOODSID,T3.GOODSNAME AS CGOODSNAME,T3.GOODSPRICE AS CGOODSPRICE,T3.GOODSSTOCK AS CGOODSSTOCK,T3.CREATEDATE AS CCREATEDATE,I.ID AS IMGID,I.NAME AS IMGNAME
+		FROM
+		(SELECT T2.CID,T2.CNUM,T2.CSTATE,T2.CCHECKED,T2.USERID,T2.USERNAME,T2.GOODSID,T2.GOODSNAME,T2.GOODSPRICE,T2.GOODSSTOCK,T2.CREATEDATE,T2.ROWNO
+		FROM
+		(SELECT T1.CID,T1.CNUM,T1.CSTATE,T1.CCHECKED,T1.USERID,T1.USERNAME,T1.GOODSID,T1.GOODSNAME,T1.GOODSPRICE,T1.GOODSSTOCK,T1.CREATEDATE,ROWNUM AS ROWNO
+		FROM
+		(SELECT C.ID AS CID,C.NUM AS CNUM,C.STATE AS CSTATE,C.CHECKED AS CCHECKED,U.ID AS USERID,U.NAME AS USERNAME,G.ID AS GOODSID,G.NAME AS GOODSNAME,G.PRICE AS GOODSPRICE,G.STOCK AS GOODSSTOCK,TO_CHAR(C.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS CREATEDATE FROM T_CART C 		
+		LEFT JOIN T_USER U ON C.USERID = U.ID LEFT JOIN T_GOODS G ON C.GOODSID = G.ID ${condition}  ORDER BY C.CREATEDATE DESC  ) T1 ) T2
+		WHERE T2.ROWNO BETWEEN ((#{pageNum}-1)*#{pageSize}+1) AND  #{pageNum}*#{pageSize} ) T3
+		LEFT JOIN T_GOODSIMG I
+		ON T3.GOODSID = I.GOODSID  
+    </select>
+	
+	<select id="queryCartCount" parameterType="GridCondition" resultType="int">
+    	SELECT COUNT(CID) FROM 
+    	(SELECT C.ID AS CID,C.NUM AS CNUM,C.STATE AS CSTATE,C.CHECKED AS CCHECKED,U.ID AS CUSERID,U.NAME AS CUSERNAME,G.ID AS CGOODSID,G.NAME AS CGOODSNAME,G.PRICE AS CGOODSPRICE,G.STOCK AS CGOODSSTOCK,TO_CHAR(C.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS CCREATEDATE FROM T_CART C 		
+		LEFT JOIN T_USER U ON C.USERID = U.ID LEFT JOIN T_GOODS G ON C.GOODSID = G.ID  ${condition}  ) 
+    </select>
+    
+    <select id="queryCartById" parameterType="Cart"  resultMap="Cart">
+		SELECT C.ID AS CID,C.NUM AS CNUM,C.STATE AS CSTATE,C.CHECKED AS CCHECKED,U.ID AS CUSERID,U.NAME AS CUSERNAME,G.ID AS CGOODSID,G.NAME AS CGOODSNAME,G.PRICE AS CGOODSPRICE,G.STOCK AS CGOODSSTOCK,TO_CHAR(C.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS CCREATEDATE, 
+		I.ID AS IMGID,I.NAME AS IMGNAME FROM T_CART C LEFT JOIN T_USER U ON C.USERID = U.ID LEFT JOIN T_GOODS G ON C.GOODSID = G.ID LEFT JOIN T_GOODSIMG I ON C.GOODSID = I.GOODSID where C.ID = #{id} 
+	</select>
+	
+	<select id="queryCartByCondition" parameterType="GridCondition"  resultMap="Cart">
+		SELECT C.ID AS CID,C.NUM AS CNUM,C.STATE AS CSTATE,C.CHECKED AS CCHECKED,U.ID AS CUSERID,U.NAME AS CUSERNAME,G.ID AS CGOODSID,G.NAME AS CGOODSNAME,G.PRICE AS CGOODSPRICE,G.STOCK AS CGOODSSTOCK,TO_CHAR(C.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS CCREATEDATE, 
+		I.ID AS IMGID,I.NAME AS IMGNAME FROM T_CART C LEFT JOIN T_USER U ON C.USERID = U.ID LEFT JOIN T_GOODS G ON C.GOODSID = G.ID LEFT JOIN T_GOODSIMG I ON C.GOODSID = I.GOODSID ${condition} 
+	</select>
+		   
+    <delete id="deleteCart" parameterType="Cart" >
+    	DELETE FROM T_CART WHERE ID = #{id}
+    </delete>
+		
+	<insert id="insertCart"  parameterType="Cart"  >
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT sys_guid() FROM DUAL
+		</selectKey>
+		INSERT INTO T_CART(ID,USERID,GOODSID,NUM)
+		VALUES(#{id},#{userId},#{goodsId},#{num})
+	</insert>
+	
+	<update id="updateCart" parameterType="Cart" >
+		UPDATE T_CART SET NUM = #{num},CHECKED =  #{checked},USERID = #{userId},GOODSID = #{goodsId},STATE = #{state} 
+		WHERE ID = #{id}
+	</update>
+	
+	<update id="updateCartNum" parameterType="Cart" >
+		UPDATE T_CART SET NUM = #{num},CHECKED =  #{checked} WHERE ID = #{id}
+	</update>
+	
+	<update id="updateCartByUserANDState" parameterType="Cart" >
+		UPDATE T_CART SET STATE = #{state} 
+		WHERE ID = #{id}
+	</update>
+		
+</mapper>

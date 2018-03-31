@@ -1,0 +1,73 @@
+@CHARSET "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "微软雅黑";
+}
+.list_wrap{
+	width: 12.5em;
+    height: 20em;
+    float: left;
+    text-align: center;
+    margin: 1em 1.74em;
+    border: 0.0125em solid #fff;
+    position: relative;
+    background-color: #fafafa;
+    cursor: pointer;
+}
+.list_wrap.rainbow-item-0{
+	border-top-color: #ffac13;
+}
+.list_wrap.rainbow-item-1{
+	border-top-color: #83c44e;
+}
+.list_wrap.rainbow-item-2{
+	border-top-color: #2196f3;
+}
+.list_wrap.rainbow-item-3{
+	border-top-color: #e53935;
+}
+.list_wrap.rainbow-item-4{
+	border-top-color: #00c0a5;
+}
+.list_wrap.first{
+	margin-left: 0;
+}
+.list_wrap.end{
+	margin-right: 0;
+}
+.list_picture{
+	text-align: center;
+    width: 100%;
+    padding-top: 2em;
+    padding-bottom: 1.5em;
+}
+.list_picture img{
+	width: 10em;
+	height: 10em;
+}
+.list_name{
+	color: #212121;
+    margin: 0 0.4em 0.5em;
+    font-size: 0.9em;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.list_title{
+	height: 1.5em;
+    margin: 0 0.4em 0.5em;
+    font-size: 0.6em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    zoom: 1;
+    color: #b0b0b0
+}
+.list_price{
+	margin: 0;
+    color: #ff6709;
+    font-size: 0.8em;
+}

@@ -1,0 +1,89 @@
+[
+  {
+    "type": "音乐",
+    "name": "audio",
+    "suffix": [
+      "mp3",
+      "wav",
+      "ape"
+    ]
+  },
+  {
+    "type": "视频",
+    "name": "video",
+    "suffix": [
+      "mp4",
+      "mkv",
+      "wmv"
+    ]
+  },
+  {
+    "type": "文档",
+    "name": "ppt",
+    "suffix": [
+      "ppt",
+      "pptx"
+    ]
+  },
+  {
+    "type": "文档",
+    "name": "xls",
+    "suffix": [
+      "xls",
+      "xlsx"
+    ]
+  },
+  {
+    "type": "代码",
+    "name": "code",
+    "suffix": [
+      "sql",
+      "js",
+      "java"
+    ]
+  },
+  {
+    "type": "文档",
+    "name": "pdf",
+    "suffix": [
+      "pdf"
+    ]
+  },
+  {
+    "type": "文档",
+    "name": "txt",
+    "suffix": [
+      "txt"
+    ]
+  },
+  {
+    "type": "压缩包",
+    "name": "zip",
+    "suffix": [
+      "zip",
+      "rar",
+      "7z"
+    ]
+  },
+  {
+    "type": "图片",
+    "name": "pic",
+    "suffix": [
+      "jpg",
+      "png",
+      "gif"
+    ]
+  },
+  {
+    "type": "种子",
+    "name": "bt",
+    "suffix": [
+      "torrent"
+    ]
+  },
+  {
+    "type": "其他",
+    "name": "nor",
+    "suffix": []
+  }
+]

@@ -1,0 +1,78 @@
+body,html{
+  width: 100%;
+  height: 100%;
+}
+.netdisk-title {
+  height: 5em;
+  margin-bottom: 0 !important;
+  .navbar-brand {
+    width: 12em;
+    height: 3.5em;
+  }
+  .navbar-collapse {
+    .navbar-form {
+      top: 0.8em;
+      position: relative;
+    }
+    .user-area{
+      right: 20em;
+      position: relative;
+      .user-img {
+        display: inline;
+        width: 40px;
+        height: 40px;
+
+      }
+      .user-text{
+        max-width: 5em;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+    }
+
+  }
+}
+
+.netdisk-body{
+  position: relative;
+  width: 100%;
+  padding-left: 160px;
+  height: 100%;
+  #sidebar-wrapper {
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    background: #f8f8f8;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: all 0.5s ease;
+    width: 160px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    li {
+      i {
+        font-size: 1.1em;
+        margin-right: 0.7em;
+      }
+
+    }
+  }
+  .table-area{
+    position: relative;
+    width: 100%;
+    padding: 1em 2em;
+    .file-operate{
+      button{
+        height: 2.85em;
+        i{
+          margin-right: 0.2em;
+        }
+      }
+    }
+  }
+}
+
+

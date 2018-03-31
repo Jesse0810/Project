@@ -1,0 +1,154 @@
+#framePage {
+	width: 100%;
+	height: 100%;
+}
+
+#head {
+	height: 4em;
+	background-color: #0282fa;
+}
+
+#content {
+	
+}
+
+#Menu {
+	width: 6em;
+	position: relative;
+	background-color: #f3f3f3;
+}
+
+#MenuPage {
+	width: 6em;
+	position: absolute;
+	top: 0em;
+}
+
+#rightPage {
+	vertical-align: top;
+}
+
+#rightIframe {
+	width: 100%;
+	min-height: 30em;
+/*	height: 100%;*/
+}
+
+.loginTitle {
+	position: relative;
+}
+
+.title {
+	color: #fff;
+    font-size: 20px;
+    padding-left: 2em;
+    font-family: "KaiTi";
+}
+
+.title span{
+	font-family: "KaiTi";
+}
+
+#userName {
+	color: #fff;
+	font-size: 16px;
+	margin: 0 8px;
+}
+
+.logo_td{
+	text-align: center;
+	height: 6em;
+}
+.logo{
+	width: 3.5em;
+    height: 3.5em;
+    background-image: url(../image/index/login/mi-logo.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: #ff6700;
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: inherit;
+}
+.personal_center{
+	width: 8em;
+	position: absolute;
+	right: 10em;
+	top: 0.4em;
+}
+.profile_photo{
+	width: 4em;
+	height: 4em;
+	border-radius: 50%;
+	box-shadow: 0 0 4px 4px #1FBFD9;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+}
+.profile_photo img{
+	width: 100%;
+	height: 100%;
+}
+.personal_center .arrow{
+	position: absolute;
+    width: 0;
+    height: 0;
+    border: 0.7em solid #0282fa;
+    border-top: 0.6em solid #FFF;
+    top: 1.9em;
+    right: 0.6em;
+    cursor: pointer;
+}
+.pc_name{
+	width: 5.1em;
+    text-align: center;
+    padding: 0.2em 0;
+    color: #fff;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.8em;		
+}
+.pc_menu{
+	position: absolute;
+    width: 100%;
+    opacity: 0;
+    height: 0;
+    transition: all 250ms;
+    list-style: none;
+    z-index: 5;
+    box-shadow: 0 1px 1px 2px #ccc;
+    border-radius: 5px;
+    top: 4.2em;
+    overflow-y: hidden;
+}
+.pc_menu:after {
+	content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border: 1.8em solid transparent;
+    border-bottom-color: #fff;
+    border-top: 0;
+    border-right: 0;
+    margin: -1.8em -0.7em 0em 0.9em;
+}
+.pc_menu.active-menu{
+	opacity:1;
+	overflow-y: visible;
+    height: 4em;
+}
+.menu_item {
+	width: 100%;
+	padding: 0.6em 0;
+	font-size: 0.8em;
+	text-align: center;
+	cursor: pointer;
+	background-color: #fff;
+	transition:all 250ms;
+}
+.menu_item:hover {
+	background-color: #E2E2E2;
+	color: #ff6700;
+}

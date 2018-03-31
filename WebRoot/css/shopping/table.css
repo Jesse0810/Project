@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.Grid{
+	margin: 0 auto;
+	border-collapse: collapse;
+/*	border: 0.0625em solid  #D8D8D8; */
+	font-size: 0.9em;
+	color: #3c3838;
+	font-family: "微软雅黑";
+	width: 100%;
+	table-layout:fixed;
+}
+.Grid tr{
+	border-top: 0.0625em solid #D8D8D8;
+	border-bottom: 0.0625em solid #D8D8D8;
+	cursor: pointer;
+}
+.Grid tbody{
+	background-color: #FFFFFF;
+}
+.Grid tbody tr:HOVER{
+	background-color:#fffef4;
+}
+.Grid thead{
+	background-color: #FFFFFF;
+    color: #333;
+	font-size: 1.2em;
+}
+.Grid th{
+	font-weight: 400;	
+}
+.Grid th i{
+	color: #0282cd;
+    font-size: 1.1em;
+    margin-left: 0.8em;
+    vertical-align: -0.1em;
+}
+.Grid td,th{
+	padding-top: 0.8em;
+    padding-bottom: 0.8em;
+}
+.aligncenter{
+	text-align: center;
+}
+.alignright{
+	text-align: right;
+}
+.alignleft{
+	text-align: left;
+}
+.itemtrSelect{
+    background-color: #dad9d9!important;
+}

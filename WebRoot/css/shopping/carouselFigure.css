@@ -1,0 +1,92 @@
+@CHARSET "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.CarouselFigure_main{
+	width: 70em;
+	overflow:hidden;
+	position: relative;
+}
+.CarouselFigure_main .picture{
+	transition: all 1000ms;
+	list-style-type: none;
+	position: relative;
+	left: 0;
+}
+.CarouselFigure_main .picture:AFTER{
+	content: "";
+	display: block;
+	clear: both;
+}
+.CarouselFigure_main .picture_item{
+	float:left;
+	list-style-type: none;
+	width: 70em;
+	cursor: pointer;
+}
+.CarouselFigure_main .picture_item:AFTER{
+	content: "";
+	display: block;
+	clear: both;
+}
+.CarouselFigure_main .picture_item img{
+	width: 70em;
+}
+.CarouselFigure_main .control{
+	position: absolute;
+    bottom: 1.5em;
+    list-style-type: none;
+    text-align: center;
+    left: 28em;
+}
+.CarouselFigure_main .control:AFTER{
+	content: "";
+	display: block;
+	clear: both;
+}
+.CarouselFigure_main .control_item{
+    list-style-type: none;
+    background-color: #000;
+    height: 0.6em;
+    width: 3.5em;
+    margin:0 2em;
+    cursor: pointer;
+    display:inline-block;
+    opacity: .3;
+    -moz-opacity:0.3;
+	-khtml-opacity: 0.3;
+	filter:alpha(opacity=30);
+}
+
+.CarouselFigure_main .selected{
+	background-color: #F0F0F0;
+}
+
+.CarouselFigure_main .btn{
+	position: absolute;
+	top:50%;
+	width: 41px;
+    height: 69px;
+    margin-top: -35px;
+    background: url("../image/CarouselFigure/icon-slides.png")  no-repeat;
+	cursor: pointer;
+}
+.CarouselFigure_main .left{
+	left: 15em;
+	transition: left 250ms;
+	background-position: -84px 50%;
+	opacity: 0;
+}
+.CarouselFigure_main .left:hover{
+	background-position: 0 50%;
+}
+.CarouselFigure_main .right{
+    right: -2em;
+    transition: right 250ms;
+    background-position: -125px 50%;
+}
+.CarouselFigure_main .right:hover{
+	background-position: -42px 50%;	
+}

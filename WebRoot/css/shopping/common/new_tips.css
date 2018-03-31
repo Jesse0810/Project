@@ -1,0 +1,23 @@
+#newTips{
+	    position: fixed;
+    left: 50%;
+    margin-left: -11em;
+    top: 3em;
+    width: 22em;
+    height: 8em;
+    line-height: 8em;
+    color: #464646;
+    background-color: #FFF;
+    text-align: center;
+    font-size: 2em;
+    border: 1px solid #D8D8D8;
+    transition: all 0.5s;
+    z-index: 50;
+}
+#newTips i{
+	font-size: 1em;
+    margin-right: 0.4em;
+}
+.errorTips{
+	color: #FF6700!important;
+}

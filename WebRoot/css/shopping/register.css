@@ -1,0 +1,268 @@
+@CHARSET "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	font-family: "微软雅黑";
+}
+.header{
+	width: 100%;
+	height: 110px;
+	box-shadow: 0px 5px 5px rgba(0,0,0,0.07);
+}
+.header .logo {
+    float: left;
+    margin-top: 14px;
+    width: 200px;
+    height: 98px;
+    background: url(../image/index/login/mistore_logo.png) no-repeat;
+}
+.header .logo-con{
+	width: 1210px;
+	margin: 0 auto;
+}
+.header .logo-title{
+	float: left;
+    height: 34px;
+    line-height: 34px;
+    font-size: 24px;
+    color: #333;
+    padding-left: 20px;
+    margin-top: 46px;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.header .have-account {
+    font-size: 16px;
+    float: right;
+    margin-top: 55px;
+    color: #999;
+}
+.header .have-account a {
+    color: #333;
+    text-decoration: none;
+}
+.container{
+	width: 1210px;
+	margin: 0 auto;	
+    border-bottom: 0.5px solid #d8d8d8;
+}
+.n-footer {
+    background: #fff;
+    margin-top: 100px;
+    position: relative;
+    z-index: 4;
+    height: 80px;
+    text-align: center;
+    font-size: 0.9em;
+}
+.nf-link-area {
+    text-align: center;
+}
+li,ul {
+    list-style: none;
+}
+.nf-link-area li {
+    display: inline-block;
+}
+.nf-link-area a:hover, .nf-link-area a.current {
+    color: #333;
+}
+.nf-link-area a {
+    display: inline-block;
+    padding: 0 10px;
+    color: #757575;
+}
+.nf-intro {
+    padding: 10px;
+    text-align: center;
+    color: #757575;
+}
+a {
+    color: #757575;
+    text-decoration: none;
+}
+a, img{
+    border: 0 none;
+}
+.main{
+	width: 38em;
+	margin: 3.5em auto;
+	background-color: #fff;
+}
+.context:AFTER{
+	content: "";
+	display: block;
+	clear: both;
+}
+.context{
+	width: 100%;
+	text-align: center;
+}
+.inputbox{
+	position:relative;
+	margin: 0 auto;
+	margin-top: 0.5em;
+    margin-bottom: 0.5em;
+	width: 85%;
+	border: solid 1px #ddd ;
+	padding: 0.9em 0.7em;
+}
+.inputbox-code{
+	width: 13em!important;
+}
+/*.code-input{
+	position:relative;
+	margin: 0 auto;
+	margin-top:1.2em;
+	margin-bottom:1.25em;
+	width: 60%;
+	height: 2.875em;
+}
+.inputbox-code{
+	position: relative;
+	width: 60%;
+	height: 2.875em;
+	border: 0.0625em solid #d8d8d8 ;
+	padding-left: 0.4em;
+    padding-top: 0.7em;
+    float: left;
+}
+.inputbox-code input{
+	width: 80%;
+    font-size: 0.9em;
+    float: left;
+    margin-left: 0.6em;
+    margin-top: 0.2em;
+    outline: none;
+    border: 0;
+}*/
+.code_btn{
+	width: 9em;
+    height: 3.2em;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #6b5d5d;
+    position: absolute;
+    right: 0.2em;
+    top: 0.2em;
+}
+.inputbox input{
+	width: 18em;
+    font-size: 15px;
+    float: left;
+    outline: none;
+    border: 0;
+    margin-left: 1.9em;
+    margin-top: 0.2em;
+}
+.inputbox input::placeholder{
+	color: #aaa;
+}
+.inputbox:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.logo{
+	float: left;
+	width: 1.3em;
+    height: 1.5em;
+	background: url("../image/index/register/register_icon.png") no-repeat;
+}
+.logo_title{
+	float: left;
+    white-space: nowrap;
+    font-size: 15px;
+    margin-left: 0.5em;
+    width: 5.5em;
+    color: #666;
+    text-align: left;
+}
+.name{
+	background-position: 0 -10px;	
+}
+.tel{
+	background-position: 0 -78px;
+}
+.pwd{
+	background-position: 0 -45px;
+}
+.code{
+	background-position: 0 -110px;
+}
+.login_btn{
+	position: relative;
+    margin: 0 auto;
+    width: 85%;
+    height: 54px;
+    font-size: 1.1em;
+    text-align: center;
+    background-color: #FF6700;
+    color: #fff;
+    padding-top: 0.7em;
+    letter-spacing: 0.4em;
+    cursor: pointer;
+}
+.login_message{
+	margin: 0 auto;
+    width: 60%;
+    height: 2em;
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    font-size: 0.9em;
+}
+.login_btn:HOVER{
+	background-color: #FF5722;
+}
+.errTips{
+    width: 85%;
+    margin: 0 auto;
+    left: -0.4em;
+    position: relative;
+    font-size: 14px;
+    height: 1.8em;
+    color: #FF6700;
+    text-align: left;
+    transition: all 250ms;
+    opacity:0;
+}
+
+.errTips i{
+	font-size: 0.9em;
+    margin-right: 0.4em;
+    font-weight: 400;
+}
+
+.placeholder{
+	position: absolute;
+    top: 1em;
+    left: 10em;
+    font-size: 15px;
+    color: #aaa;
+}
+
+.txtError{
+	border: 1px solid red!important;
+}
+.hidden{
+	display: none;
+}
+.btnDisable{
+	background-color: #959ba5!important;
+}
+.messageSuccess{
+    color: #0d8209!important;
+}
+
+.messageError{
+	color: #d80d0d!important;
+}

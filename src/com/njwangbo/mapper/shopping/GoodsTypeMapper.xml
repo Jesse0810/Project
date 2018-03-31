@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwangbo.mapper.shopping.GoodsTypeMapper">
+		<resultMap type="GoodsType" id="GoodsType">
+			<id property="id" column="ID" />
+			<result property="name" column="NAME" />
+			<result property="num" column="NUM" />
+			<result property="createDate" column="CREATEDATE" />			
+		</resultMap>
+		
+	<select id="queryGoodsTypeByCondition" parameterType="GridCondition" resultMap="GoodsType">
+    	SELECT ID,NAME,CREATEDATE FROM (SELECT ID,NAME,CREATEDATE,ROWNUM AS ROWNO FROM 
+		(SELECT ID,NAME,TO_CHAR(CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:mi:ss') AS CREATEDATE FROM T_TYPE ${condition} ORDER BY CREATEDATE DESC ,ID ASC)) 
+		WHERE ROWNO BETWEEN (#{pageSize}*(#{pageNum}-1)+1) AND #{pageSize}*#{pageNum}
+    </select>
+	
+	<select id="queryGoodsTypeAll" parameterType="GridCondition" resultMap="GoodsType">
+    	SELECT ID,NAME,TO_CHAR(CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:mi:ss') AS CREATEDATE FROM T_TYPE
+    </select>
+	
+	<select id="queryGoodsTypeGroupByGoodsCount" parameterType="GridCondition" resultMap="GoodsType">
+    	SELECT COUNT(G.NAME) AS NUM,T.NAME AS NAME FROM T_TYPE T LEFT JOIN T_GOODS G ON T.ID = G.TYPEID GROUP BY T.NAME
+    </select>
+	
+	<select id="queryGoodsTypeCount" parameterType="GridCondition" resultType="int">
+    	SELECT COUNT(ID) FROM T_TYPE ${condition}
+    </select>
+    
+    <select id="queryGoodsTypeById" parameterType="GoodsType"  resultMap="GoodsType">
+		select ID,NAME,CREATEDATE from T_TYPE where ID = #{id}
+	</select>
+
+	<select id="queryGoodsTypeByName" parameterType="GoodsType"  resultMap="GoodsType">
+		select ID,NAME,CREATEDATE from T_TYPE where NAME = #{name}
+	</select>
+	
+	
+    
+    <delete id="deleteGoodsTypeById" parameterType="GoodsType" >
+    	DELETE FROM T_TYPE WHERE ID=#{id}
+    </delete>
+		
+	<insert id="insertGoodsType"  parameterType="GoodsType"  >
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT sys_guid() FROM DUAL
+		</selectKey>
+		INSERT INTO T_TYPE(ID,NAME)
+		VALUES(#{id},#{name})
+	</insert>
+	
+	<update id="updateGoodsType"  parameterType="GoodsType"  >
+		UPDATE T_TYPE SET NAME = #{name} WHERE ID = #{id}
+	</update>
+	
+		
+</mapper>

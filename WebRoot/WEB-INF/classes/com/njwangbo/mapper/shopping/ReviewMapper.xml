@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwangbo.mapper.shopping.ReviewMapper">
+		<resultMap type="Review" id="Review">
+			<id property="id" column="RID" />
+			<result property="con" column="RCON" />
+			<result property="createDate" column="RCREATEDATE" />
+			<result property="userId" column="RUSERID" />
+			<result property="goodsId" column="RGOODSID" />
+			<result property="star" column="RSTAR" />
+			<result property="nicenum" column="RNICENUM" />
+			<result property="commentnum" column="RCOMMENTNUM" />
+			<result property="userName" column="RUSERNAME"/>
+			<result property="userLvl" column="RUSERLVL"/>
+			<result property="userImg" column="RUSERIMG"/>
+			<result property="goodsName" column="RGOODSNAME"/>
+			<collection property="imgList" ofType="ReviewImg" >
+				<id property="id" column="IMGID" />
+				<result property="name" column="IMGNAME" />
+				<result property="reviewId" column="RID" />
+			</collection>
+			
+		</resultMap>
+		
+	<select id="queryReviewForGridByCondition" parameterType="GridCondition" resultMap="Review">
+		SELECT T3.RID AS RID,T3.RCON AS RCON,T3.RNICENUM AS RNICENUM,T3.RCOMMENTNUM AS RCOMMENTNUM,
+		T3.RSTAR AS RSTAR,T3.USERID AS RUSERID,T3.USERNAME AS RUSERNAME,T3.USERLVL AS RUSERLVL,T3.USERIMG AS RUSERIMG,
+		T3.GOODSID AS RGOODSID,T3.GOODSNAME AS RGOODSNAME,T3.CREATEDATE AS RCREATEDATE,I.ID AS IMGID,I.NAME AS IMGNAME
+		FROM
+		(SELECT T2.RID,T2.RCON,T2.RNICENUM,T2.RCOMMENTNUM,T2.RSTAR,T2.USERID,T2.USERNAME,T2.USERLVL,T2.USERIMG,T2.GOODSID,T2.GOODSNAME,T2.CREATEDATE,T2.ROWNO
+		FROM
+		(SELECT T1.RID,T1.RCON,T1.RNICENUM,T1.RCOMMENTNUM,T1.RSTAR,T1.USERID,T1.USERNAME,T1.USERLVL,T1.USERIMG,T1.GOODSID,T1.GOODSNAME,T1.CREATEDATE,ROWNUM AS ROWNO
+		FROM
+		(SELECT R.ID AS RID,R.CON AS RCON,R.NICENUM AS RNICENUM,R.COMMENTNUM AS RCOMMENTNUM,R.STAR AS RSTAR,U.ID AS USERID,U.NAME AS USERNAME,U.LVL AS USERLVL,U.IMAGE AS USERIMG,G.ID AS GOODSID,G.NAME AS GOODSNAME,TO_CHAR(R.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS CREATEDATE FROM T_REVIEW R 		
+		LEFT JOIN T_USER U ON R.USERID = U.ID LEFT JOIN T_GOODS G ON R.GOODSID = G.ID ${condition}  ORDER BY R.CREATEDATE DESC  ) T1 ) T2
+		WHERE T2.ROWNO BETWEEN ((#{pageNum}-1)*#{pageSize}+1) AND  #{pageNum}*#{pageSize} ) T3
+		LEFT JOIN T_REVIEWIMG I
+		ON T3.RID = I.REVIEWID ORDER BY T3.CREATEDATE DESC
+    </select>
+	
+	<select id="queryReviewCount" parameterType="GridCondition" resultType="int">
+    	SELECT COUNT(RID) FROM 
+    	(SELECT R.ID AS RID,R.CON AS RCON,R.NICENUM AS RNICENUM,R.COMMENTNUM AS RCOMMENTNUM,R.STAR AS RSTAR,U.ID AS USERID,U.NAME AS USERNAME,U.LVL AS USERLVL,U.IMAGE AS USERIMG,G.ID AS GOODSID,G.NAME AS GOODSNAME,TO_CHAR(R.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS CREATEDATE FROM T_REVIEW R 		
+		LEFT JOIN T_USER U ON R.USERID = U.ID LEFT JOIN T_GOODS G ON R.GOODSID = G.ID ${condition}  ORDER  BY CREATEDATE DESC  ) 
+    </select>
+    
+    <select id="queryReviewById" parameterType="Review"  resultMap="Review">
+		SELECT R.ID AS RID,R.CON AS RCON,R.NICENUM AS RNICENUM,R.COMMENTNUM AS RCOMMENTNUM,R.STAR AS RSTAR,U.ID AS RUSERID,U.NAME AS RUSERNAME,U.LVL AS RUSERLVL,U.IMAGE AS RUSERIMG,G.ID AS RGOODSID,G.NAME AS RGOODSNAME,TO_CHAR(R.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS RCREATEDATE,I.ID AS IMGID,I.NAME AS IMGNAME 
+		FROM T_REVIEW R LEFT JOIN T_USER U ON R.USERID = U.ID LEFT JOIN T_GOODS G ON R.GOODSID = G.ID LEFT JOIN T_REVIEWIMG I ON R.ID = I.REVIEWID where R.ID = #{id} 
+	</select>
+	
+	<select id="queryReviewByCondition" parameterType="GridCondition"  resultMap="Review">
+		SELECT R.ID AS RID,R.CON AS RCON,R.NICENUM AS RNICENUM,R.COMMENTNUM AS RCOMMENTNUM,R.STAR AS RSTAR,U.ID AS RUSERID,U.NAME AS RUSERNAME,U.LVL AS RUSERLVL,U.IMAGE AS RUSERIMG,G.ID AS RGOODSID,G.NAME AS RGOODSNAME,TO_CHAR(R.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS RCREATEDATE,I.ID AS IMGID,I.NAME AS IMGNAME 
+		FROM T_REVIEW R LEFT JOIN T_USER U ON R.USERID = U.ID LEFT JOIN T_GOODS G ON R.GOODSID = G.ID LEFT JOIN T_REVIEWIMG I ON R.ID = I.REVIEWID  ${condition} 
+	</select>
+		   
+    <delete id="deleteReview" parameterType="Review" >
+    	DELETE FROM T_REVIEW WHERE ID = #{id}
+    </delete>
+		
+	<insert id="insertReview"  parameterType="Review"  >
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT sys_guid() FROM DUAL
+		</selectKey>
+		INSERT INTO T_REVIEW(ID,CON,USERID,GOODSID,STAR)
+		VALUES(#{id},#{con},#{userId},#{goodsId},#{star})
+	</insert>
+	
+	<update id="updateReview" parameterType="Review" >
+		UPDATE T_REVIEW SET CON = #{con},USERID = #{userId},GOODSID = #{goodsId},STAR = #{star} 
+		WHERE ID = #{id}
+	</update>
+	
+		
+</mapper>

@@ -1,0 +1,16 @@
+#tips{
+	position: fixed;
+    left: 50%;
+    top: 3em;
+    padding: 0.5em 0.9em;
+    color: #F5F5F5;
+    border: 1px solid #D8D8D8;
+    transition: all 0.5s;
+    z-index: 50;
+}
+.successTips{
+	background-color: #02bf06!important;
+}
+.errorTips{
+	background-color: #f72121!important;
+}

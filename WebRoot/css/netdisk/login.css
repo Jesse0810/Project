@@ -1,0 +1,107 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.background > .carousel-inner {
+  height: 100%;
+}
+.background > .carousel-inner > .item {
+  height: 100%;
+}
+.background > .carousel-inner > .item > .item-img {
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+}
+.background > .carousel-inner > .item > .item-img.slide-img1 {
+  background-image: url(../../images/netdisk/login/part-login@2x.jpg);
+}
+.background > .carousel-inner > .item > .item-img.slide-img2 {
+  background-image: url(../../images/netdisk/login/save.jpg);
+}
+.background > .carousel-inner > .item > .item-img.slide-img3 {
+  background-image: url(../../images/netdisk/login/secrect.jpg);
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.content > .netdisk-nav {
+  padding-left: 12em;
+}
+.content > .netdisk-nav .nav-icon {
+  width: 10em;
+  height: 100%;
+}
+.content > .netdisk-container {
+  position: relative;
+  top: 20em;
+}
+.content > .netdisk-container .info > h1,
+.content > .netdisk-container .info > h3 {
+  color: #f3f4f5;
+}
+.content > .netdisk-container .info > h1 {
+  font-size: 5em;
+}
+.content > .netdisk-container .info > h3 {
+  font-size: 2.5em;
+  letter-spacing: 0.6em;
+}
+.content > .netdisk-container .login {
+  position: relative;
+  top: -9em;
+}
+.content > .netdisk-container .login .panel-title {
+  font-size: 1.6em;
+  letter-spacing: 1.1em;
+  padding: 0.4em 0.6em;
+}
+.content > .netdisk-container .login .panel-body {
+  padding: 3em 0.4em;
+}
+.content > .netdisk-container .login .panel-body img.code_btn {
+  cursor: pointer;
+}
+.content > .netdisk-container .login .panel-body .control-label {
+  color: #333333;
+  font-weight: 400;
+  font-family: "Microsoft YaHei UI";
+  font-size: 1.1em;
+}
+.content > .netdisk-container .login .panel-body .loginbtn {
+  width: 90%;
+  letter-spacing: 0.2em;
+}
+.content > .netdisk-container .login .panel-body .help-block {
+  font-size: 12px;
+  line-height: 2.2em;
+  margin: 0;
+}
+.content > .netdisk-container .login .panel-body .help-block i {
+  color: #737373;
+  margin-right: 0.4em;
+}
+.content > .netdisk-container .login .panel-body .help-block.text-danger {
+  visibility: visible!important;
+  color: #a94442!important;
+}
+.content > .netdisk-container .login .panel-body .help-block.text-danger i {
+  color: #a94442;
+}
+.netdisk-toast {
+  color: #FFFFFF;
+  letter-spacing: 0.1em;
+  font-family: "Microsoft YaHei UI";
+}
+.netdisk-toastp {
+  font-weight: 200;
+}
+.netdisk-toasth4 {
+  font-weight: 400;
+}

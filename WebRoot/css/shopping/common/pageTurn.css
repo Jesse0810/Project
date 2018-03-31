@@ -1,0 +1,36 @@
+.pageTurn{
+	width: 100%;
+	height: 65px;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.pageTurn .numbers {
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    padding: 1px 0;
+    margin: 0 7px;
+    font-size: 18px;
+    font-weight: 200;
+    font-family: "Arial";
+    line-height: 24px;
+    color: #b0b0b0;
+}
+.pageTurn .iconfont {
+    font-size: 24px;
+    vertical-align: bottom;
+}
+.pageTurn .current {
+    background-color: #757575;
+    color: #fff;
+}
+.pageTurn a.numbers:hover {
+    background: #b0b0b0;
+    color: #fff;
+}
+
+.pageTurn a.numbers {
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}

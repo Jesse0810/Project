@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwangbo.mapper.shopping.OrderChildMapper">
+		<resultMap type="OrderChild" id="OrderChild">
+			<id property="id" column="OID" />
+			<result property="cartId" column="OCARTID" />
+			<result property="orderId" column="OORDERID" />
+			<result property="userId" column="OUSERID" />
+			<result property="userName" column="OUSERNAME" />
+			<result property="goodsId" column="OGOODSID" />
+			<result property="goodsName" column="OGOODSNAME"/>
+			<result property="price" column="OPRICE"/>
+			<result property="num" column="ONUM" />
+			<collection property="imgList" ofType="GoodsImg" >
+				<id property="id" column="IMGID" />
+				<result property="name" column="IMGNAME" />
+				<result property="goodsId" column="OGOODSID" />
+			</collection>
+			
+		</resultMap>
+		
+<!-- 	<select id="queryOrderForGridByCondition" parameterType="GridCondition" resultMap="Order">
+		SELECT T3.OID AS OID,T3.OORDERID AS OORDERID,T3.OSTATE AS OSTATE,T3.OPRICE AS OPRICE,T3.CARTID AS OCARTID,T3.NUM AS ONUM,T3.USERID AS OUSERID,
+		T3.USERNAME AS OUSERNAME,T3.GOODSID AS OGOODSID,T3.GOODSNAME AS OGOODSNAME,T3.CREATEDATE AS OCREATEDATE,I.ID AS IMGID,I.NAME AS IMGNAME
+		FROM
+		(SELECT T2.OID,T2.OORDERID,T2.OSTATE,T2.OPRICE,T2.CARTID,T2.NUM,T2.USERID,T2.USERNAME,T2.GOODSID,T2.GOODSNAME,T2.CREATEDATE,T2.ROWNO
+		FROM
+		(SELECT T1.OID,T1.OORDERID,T1.OSTATE,T1.OPRICE,T1.CARTID,T1.NUM,T1.USERID,T1.USERNAME,T1.GOODSID,T1.GOODSNAME,T1.CREATEDATE,ROWNUM AS ROWNO
+		FROM
+		(SELECT O.ID AS OID,O.ORDERID AS OORDERID,O.STATE AS OSTATE,O.PRICE AS OPRICE,C.ID AS CARTID,C.NUM AS NUM,U.ID AS USERID,U.NAME AS USERNAME,G.ID AS GOODSID,G.NAME AS GOODSNAME,TO_CHAR(O.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS CREATEDATE FROM T_ORDER O 		
+		LEFT JOIN T_CART C ON C.ID = O.CARTID LEFT JOIN T_USER U ON C.USERID = U.ID LEFT JOIN T_GOODS G ON C.GOODSID = G.ID ${condition}  ORDER BY O.CREATEDATE DESC  ) T1 ) T2
+		WHERE T2.ROWNO BETWEEN ((#{pageNum}-1)*#{pageSize}+1) AND  #{pageNum}*#{pageSize} ) T3
+		LEFT JOIN T_GOODSIMG I
+		ON T3.GOODSID = I.GOODSID  
+    </select> -->
+    
+    <select id="queryOrderChildById" parameterType="OrderChild"  resultMap="OrderChild">
+		SELECT O.ID AS OID,O.ORDERID AS OORDERID,O.PRICE AS OPRICE,C.ID AS CARTID,C.NUM AS NUM,U.ID AS USERID,U.NAME AS USERNAME,G.ID AS GOODSID,G.NAME AS GOODSNAME,I.ID AS IMGID,I.NAME AS IMGNAME 
+		FROM T_ORDERCHILD O LEFT JOIN T_CART C ON C.ID = O.CARTID LEFT JOIN T_USER U ON C.USERID = U.ID LEFT JOIN T_GOODS G ON C.GOODSID = G.ID LEFT JOIN T_GOODSIMG I ON G.ID = I.GOODSID where O.ID = #{id} 
+	</select>
+		   
+    <delete id="deleteOrderChild" parameterType="OrderChild" >
+    	DELETE FROM T_ORDERCHILD WHERE ID = #{id}
+    </delete>
+
+	<delete id="deleteOrderChildByOrderId" parameterType="OrderChild" >
+    	DELETE FROM T_ORDERCHILD WHERE ORDERID = #{orderId}
+    </delete>
+    
+	<insert id="insertOrderChild"  parameterType="OrderChild"  >
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT sys_guid() FROM DUAL
+		</selectKey>
+		INSERT INTO T_ORDERCHILD(ID,CARTID,ORDERID,PRICE)
+		VALUES(#{id},#{cartId},#{orderId},#{price})
+	</insert>
+	
+	<update id="updateOrderChild" parameterType="OrderChild" >
+		UPDATE T_ORDERCHILD SET CARTID = #{cartId},ORDERID =  #{orderId},PRICE = #{price}
+		WHERE ID = #{id}
+	</update>
+		
+</mapper>

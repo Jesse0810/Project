@@ -1,0 +1,150 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+	text-decoration: none;
+	box-sizing:border-box;
+}
+
+
+html,body{
+	width: 100%;
+	height: 100%;
+	
+}
+
+/* input[type="button"]{
+    width: 100%;
+    padding: 0.26em 0.2em;
+    color: #fff;
+    background-color: #4c8dfd;
+    border: 2px solid #4c8bf9;
+    cursor: pointer;
+    outline: none;
+
+} */
+
+.loginPage{
+    width: 18em;
+    border: 0.0625em solid #ccc;
+    padding: 1.1em;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left: -9em;
+    margin-top: -10em;
+}
+.loginText{
+    text-align: center;
+    font-size: 1.5em;
+    padding: 0.5em 0;
+}
+.loginDes{
+	text-align: center;
+	
+}
+.row{
+    margin: 1em 0em;
+    position: relative;
+}
+
+/* input[type="text"],[type="password"]{
+	width: 100%;
+    padding: 0.4em 0.6em;
+    outline: none;
+    border:2px solid #CCC; 
+}
+input[type="text"]:focus,[type="password"]:focus{
+	width: 100%;
+    padding: 0.4em 0.6em;
+    outline: none;
+    border:2px solid #4383f3; 
+} */
+.code{
+	position: relative;
+	width:60%;
+}
+/* 验证码输入框 */
+#txtCode{
+	
+	
+}
+/* 验证码图片 */
+#codePic{
+    position: absolute;
+    top: 0em;
+    right: -6.1em;
+    cursor: pointer;
+}
+
+
+.savePwd{
+    font-size: 0.7em;
+    position: absolute;
+    top: 0.1em;
+    left: 1.6em;
+    cursor: pointer;
+}
+#regiest{
+    position: absolute;
+    right: 0.4em;
+    top: 0em;
+    font-size: 0.8em;
+    color: #1e61d4;
+}
+
+
+input[type="button"]:hover{
+	background-color: #4383f3;
+    border: 2px solid #3e7ff1;
+}
+input[type="button"]:active{
+    background-color: #4383f3;
+    border: 2px solid #3e7ff1;
+    box-shadow: 1px 1px 5px #092479;
+    
+}
+
+.txtError{
+	border: 1px solid red!important;
+}
+.errTips{
+    position: absolute;
+    top: 0.5em;
+    right: -0.4em;
+    font-size: 13px;
+    color: red;
+    transition: all 250ms;
+    opacity:0;
+}
+
+.placeholder{
+	position: absolute;
+    top: 0.5em;
+    left: 0.8em;
+    font-size: 13px;
+    color: #aaa;
+}
+
+
+.hidden{
+	display: none;
+}
+
+
+.btnSuccess{
+    background-color: #0d8209!important;
+    border: 2px solid #0c770e!important;
+}
+
+.btnError{
+	background-color: #d80d0d!important;
+    border: 2px solid #cc0d0d!important;
+}
+
+
+.btnDisable{
+	background-color: #959ba5!important;
+    border: 2px solid #9499a0!important;
+}

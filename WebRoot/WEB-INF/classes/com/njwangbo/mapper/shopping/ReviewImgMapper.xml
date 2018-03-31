@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwangbo.mapper.shopping.ReviewImgMapper">
+		<resultMap type="ReviewImg" id="ReviewImg">
+			<id property="id" column="ID" />
+			<result property="name" column="NAME" />
+			<result property="reviewId" column="REVIEWID" />
+		</resultMap>
+		
+	<select id="queryImgByReviewId" parameterType="ReviewImg">
+    	SELECT ID,NAME,REVIEWID FROM T_REVIEWIMG WHERE REVIEWID = #{reviewId}
+    </select>
+    
+    <delete id="deleteImgByReviewId" parameterType="ReviewImg">
+    	DELETE FROM T_REVIEWIMG WHERE REVIEWID = #{reviewId}
+    </delete>
+    	
+	<insert id="addReviewImg"  parameterType="ReviewImg"  >
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT sys_guid() FROM DUAL
+		</selectKey>
+		INSERT INTO T_REVIEWIMG(ID,NAME,REVIEWID) 
+		VALUES(#{id},#{name},#{reviewId})
+	</insert>
+		
+	<delete id="delReviewImg" parameterType="ReviewImg" >
+		DELETE FROM T_REVIEWIMG WHERE ID = #{id}
+	</delete>
+	
+	<update id="updateReviewImg" parameterType="ReviewImg">
+		UPDATE T_REVIEWIMG SET NAME=#{name} WHERE REVIEWID = #{reviewId} AND ID=#{id}
+	</update>
+	
+</mapper>

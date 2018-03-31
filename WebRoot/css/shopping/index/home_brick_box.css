@@ -1,0 +1,220 @@
+@CHARSET "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "微软雅黑";
+}
+.home-brick-box{
+	margin-bottom: 8px;
+	position: relative;
+}
+.home-brick-row-2-box{
+	height: 686px;
+}
+.home-brick-box .box-hd{
+	position: relative;
+}
+.home-brick-box .box-hd .title{
+	margin: 0;
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 58px;
+    color: #333;
+}
+.home-brick-box .tab-more{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.home-brick-box .tab-more .tab-list {
+    margin: 0;
+    padding: 16px 0 0;
+    list-style-type: none;
+    font-size: 16px;
+    position: relative;
+    z-index: 333;
+}
+.home-brick-box .tab-more .tab-list:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.home-brick-box .tab-list li{
+	float: left;
+    margin-left: 2.2em;
+    cursor: pointer;
+}
+.home-brick-box .tab-more .tab-list .active{
+	
+}
+.brick-item-active {
+    -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+}
+.home-brick-box .box_bd{
+	width: 100%;
+}
+.brick-promo-list{
+	float: left;
+	height: 614px;
+    width: 234px;
+    cursor: pointer;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.brick-list{
+	float: left;
+	width: 992px;
+	height: 614px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.brick-item-m {
+    height: 246px;
+    padding: 34px 0 20px;
+}
+.brick-item {
+    position: relative;
+    z-index: 1;
+    float: left;
+    width: 234px;
+    margin-left: 14px;
+    margin-bottom: 14px;
+    background: #fff;
+    box-sizing: content-box;
+    cursor: pointer;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.figure-img{
+	width: 150px;
+    height: 150px;
+    margin: 0 auto 18px;
+}
+.figure-img img{
+	width: 150px;
+    height: 150px;
+}
+.brick-item-m .title {
+    margin: 0 10px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: #333333;
+    overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.brick-item-m .desc {
+    margin: 2px 10px 10px;
+    height: 18px;
+    font-size: 12px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+    color: #b0b0b0;
+}
+.brick-item-m .price {
+    margin: 0 10px 10px;
+    text-align: center;
+    color: #ff6700;
+}
+.brick-item-m .review-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    width: 234px;
+    height: 0;
+    overflow: hidden;
+    zoom: 1;
+    font-size: 12px;
+    background: #ff6700;
+    opacity: 0;
+    filter: alpha(opacity=0)\9;
+    box-sizing: border-box;
+    padding: 1em 1.5em;
+    color: #FFFFFF;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+    overflow: hidden;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.brick-item-active .review-wrapper {
+    height: 76px;
+    opacity: 1;
+    filter: alpha(opacity=100)\9;
+}
+.brick-item-s{
+	height: 93px;
+    padding-top: 50px;
+}
+.brick-item-s .figure-img {
+    position: absolute;
+    right: 20px;
+    top: 32px;
+    width: 80px;
+    height: 80px;
+}
+.brick-item-s .figure-img img{
+    width: 80px;
+    height: 80px;
+}
+.brick-item-s .title {
+    margin: -10px 110px 5px 30px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.brick-item-s .price {
+    margin: 0 110px 0 30px;
+    font-size: 12px;
+    color: #ff6700;
+}
+.brick-item-s .figure-more {
+    position: absolute;
+    right: 35px;
+    top: 48px;
+    width: 48px;
+    height: 48px;
+}
+.brick-item-s i {
+    font-size: 48px;
+    line-height: 48px;
+    color: #ff6700;
+}
+.brick-item-s .more {
+    display: block;
+    margin: 0 110px 0 30px;
+    font-size: 18px;
+    color: #333;
+}
+.brick-item-s .more small {
+    display: block;
+    font-size: 12px;
+    color: #757575;
+}
+.tab-active{
+	background-color: #ff6700;
+	color: #fff;
+}
+#itemHover{
+	height:1.3em;
+	background-color: #fbc6a2;
+	position: absolute;
+	bottom:0em;
+	transition:all 250ms;
+}
+#itemSelect{
+	height:1.3em;
+	background-color: #ff6700;
+	position: absolute;
+	bottom:0em;
+	transition:all 250ms;
+}

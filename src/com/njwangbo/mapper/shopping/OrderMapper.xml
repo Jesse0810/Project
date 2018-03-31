@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwangbo.mapper.shopping.OrderMapper">
+		<resultMap type="Order" id="Order">
+			<id property="id" column="OID" />
+			<result property="createDate" column="OCREATEDATE" />
+			<result property="state" column="OSTATE" />
+			<result property="userId" column="OUSERID" />
+			<result property="userName" column="OUSERNAME" />
+			<collection property="childList" ofType="OrderChild" >
+				<id property="id" column="CHID" />
+				<result property="cartId" column="CHCARTID" />
+				<result property="orderId" column="OID" />
+				<result property="goodsId" column="CHGOODSID" />
+				<result property="goodsName" column="CHGOODSNAME"/>
+				<result property="price" column="CHPRICE"/>
+				<result property="num" column="CHNUM" />
+				<collection property="imgList" ofType="GoodsImg" >
+					<id property="id" column="IMGID" />
+					<result property="name" column="IMGNAME" />
+					<result property="goodsId" column="CHGOODSID" />
+				</collection>
+			</collection>
+			
+		</resultMap>
+		
+	<select id="queryOrderForGridByCondition" parameterType="GridCondition" resultMap="Order">
+		SELECT T3.OID AS OID,T3.OSTATE AS OSTATE,T3.OUSERID AS OUSERID,T3.OUSERNAME AS OUSERNAME,CH.ID AS CHID,G.ID AS CHGOODSID,
+		G.NAME AS CHGOODSNAME,CH.PRICE AS CHPRICE,C.NUM AS CHNUM,T3.CREATEDATE AS OCREATEDATE,I.ID AS IMGID,I.NAME AS IMGNAME 
+		FROM
+		(SELECT T2.OID,T2.OSTATE,T2.OUSERID,T2.OUSERNAME,T2.CREATEDATE,T2.ROWNO
+		FROM
+		(SELECT T1.OID,T1.OSTATE,T1.OUSERID,T1.OUSERNAME,T1.CREATEDATE,ROWNUM AS ROWNO
+		FROM
+		(SELECT O.ID AS OID,O.STATE AS OSTATE,U.ID AS OUSERID,U.NAME AS OUSERNAME,TO_CHAR(O.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS CREATEDATE FROM T_ORDER O LEFT JOIN T_USER U ON U.ID = O.USERID ${condition}  
+		ORDER BY O.CREATEDATE DESC  ) T1 ) T2
+		WHERE T2.ROWNO BETWEEN ((#{pageNum}-1)*#{pageSize}+1) AND  #{pageNum}*#{pageSize} ) T3 
+		LEFT JOIN T_ORDERCHILD CH ON CH.ORDERID = T3.OID LEFT JOIN T_CART C ON C.ID = CH.CARTID 
+		LEFT JOIN T_GOODS G ON C.GOODSID = G.ID LEFT JOIN T_GOODSIMG I ON G.ID = I.GOODSID ORDER BY T3.CREATEDATE DESC
+    </select>
+	
+	<select id="queryOrderCount" parameterType="GridCondition" resultType="int">
+    	SELECT COUNT(OID) FROM 
+    	(SELECT O.ID AS OID,O.STATE AS OSTATE,U.ID AS OUSERID,U.NAME AS OUSERNAME,TO_CHAR(O.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS OCREATEDATE FROM T_ORDER O LEFT JOIN T_USER U ON U.ID = O.USERID ${condition} ) 
+    </select>
+    
+    <select id="queryOrderById" parameterType="Order"  resultMap="Order">
+		SELECT O.ID AS OID,O.STATE AS OSTATE,TO_CHAR(O.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS OCREATEDATE,CH.ID AS CHID,U.ID AS OUSERID,U.NAME AS OUSERNAME,
+		G.ID AS CHGOODSID,G.NAME AS CHGOODSNAME,CH.PRICE AS CHPRICE,C.NUM AS CHNUM,I.ID AS IMGID,I.NAME AS IMGNAME FROM T_ORDER O LEFT JOIN T_USER U ON U.ID = O.USERID LEFT JOIN T_ORDERCHILD CH ON CH.ORDERID = O.ID LEFT JOIN T_CART C ON C.ID = CH.CARTID 
+		LEFT JOIN T_GOODS G ON C.GOODSID = G.ID LEFT JOIN T_GOODSIMG I ON G.ID = I.GOODSID where O.ID = #{id} 
+	</select>
+	
+	<select id="queryOrderByCondition" parameterType="GridCondition"  resultMap="Order">
+		SELECT O.ID AS OID,O.STATE AS OSTATE,TO_CHAR(O.CREATEDATE,'YYYY"年"MM"月"dd"日" HH24:MI:SS') AS OCREATEDATE,CH.ID AS CHID,U.ID AS OUSERID,U.NAME AS OUSERNAME,
+		G.ID AS CHGOODSID,G.NAME AS CHGOODSNAME,CH.PRICE AS CHPRICE,C.NUM AS CHNUM,I.ID AS IMGID,I.NAME AS IMGNAME FROM T_ORDER O LEFT JOIN T_USER U ON U.ID = O.USERID LEFT JOIN T_ORDERCHILD CH ON CH.ORDERID = O.ID LEFT JOIN T_CART C ON C.ID = CH.CARTID 
+		LEFT JOIN T_GOODS G ON C.GOODSID = G.ID LEFT JOIN T_GOODSIMG I ON G.ID = I.GOODSID ${condition} 
+	</select>
+		   
+    <delete id="deleteOrder" parameterType="Order" >
+    	DELETE FROM T_ORDER WHERE ID = #{id}
+    </delete>
+		
+	<insert id="insertOrder"  parameterType="Order"  >
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT sys_guid() FROM DUAL
+		</selectKey>
+		INSERT INTO T_ORDER(ID,STATE,USERID)
+		VALUES(#{id},#{state},#{userId})
+	</insert>
+	
+	<update id="updateOrder" parameterType="Order" >
+		UPDATE T_ORDER SET STATE = #{state},CREATEDATE = sysdate WHERE ID = #{id}
+	</update>
+	
+		
+</mapper>

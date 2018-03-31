@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwangbo.mapper.shopping.GoodsImgMapper">
+		<resultMap type="GoodsImg" id="GoodsImg">
+			<id property="id" column="ID" />
+			<result property="name" column="NAME" />
+			<result property="goodsId" column="GOODSID" />
+			<result property="basePath" column="BASEPATH" />
+		</resultMap>
+		
+	<select id="queryImgByNameAndGoodsId" parameterType="GoodsImg">
+    	SELECT ID,NAME,GOODSID,BASEPATH FROM T_GOODSIMG
+    </select>
+    
+    <delete id="deleteImgByGoodsId" parameterType="GoodsImg">
+    	DELETE FROM T_GOODSIMG WHERE GOODSID=#{goodsId}
+    </delete>
+    	
+	<insert id="addGoodsImg"  parameterType="GoodsImg"  >
+		<selectKey keyProperty="id" order="BEFORE"  resultType="String">
+			SELECT sys_guid() FROM DUAL
+		</selectKey>
+		INSERT INTO T_GOODSIMG(ID,NAME,GOODSID) 
+		VALUES(#{id},#{name},#{goodsId})
+	</insert>
+		
+	<delete id="delGoodsImg" parameterType="GoodsImg" >
+		DELETE FROM T_GOODSIMG WHERE ID = #{id}
+	</delete>
+	
+	<update id="updateGoodsImg" parameterType="GoodsImg">
+		UPDATE T_GOODSIMG SET NAME=#{name} WHERE GOODSID=#{goodsId} AND ID=#{id}
+	</update>
+	
+</mapper>
